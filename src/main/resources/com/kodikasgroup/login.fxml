@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="689.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.LoginController">
+   <Text layoutX="118.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PORTALE PRENOTAZIONE VACCINI USL VENETO">
+      <font>
+         <Font size="19.0" />
+      </font>
+   </Text>
+   <TextField fx:id="inputField" layoutX="197.0" layoutY="151.0" prefHeight="24.0" prefWidth="247.0" />
+   <Text fill="#575656" layoutX="197.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inserisci il Codice Fiscale" />
+   <Text fill="#e10000" layoutX="197.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ERRORE: Inserire un CodiceFiscale Valido" visible="false" wrappingWidth="294.7255859375" />
+   <Button fx:id="confirmButton" defaultButton="true" layoutX="451.0" layoutY="151.0" mnemonicParsing="false" onAction="#goToNextPage" text="Conferma" AnchorPane.leftAnchor="451.0" />
+</AnchorPane>

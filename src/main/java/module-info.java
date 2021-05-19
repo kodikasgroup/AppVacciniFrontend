@@ -4,4 +4,6 @@ module com.kodikasgroup {
 
     opens com.kodikasgroup to javafx.fxml;
     exports com.kodikasgroup;
+    exports com.kodikasgroup.controller;
+    opens com.kodikasgroup.controller to javafx.fxml;
 }
