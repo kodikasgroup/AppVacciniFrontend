@@ -1,6 +1,10 @@
 module com.kodikasgroup {
     requires javafx.controls;
     requires javafx.fxml;
+    requires gson;
+    requires java.logging;
+    requires java.sql;
+    requires static lombok;
 
     opens com.kodikasgroup to javafx.fxml;
     exports com.kodikasgroup;
