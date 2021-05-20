@@ -4,20 +4,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.kodikasgroup.model.Citizen;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Pattern;
 
+import static com.kodikasgroup.App.newWindow;
 import static com.kodikasgroup.App.setRoot;
 import static com.kodikasgroup.utils.RequestMaker.sendGET;
 import static com.kodikasgroup.utils.RequestMaker.sendPUT;
 import static com.kodikasgroup.utils.Utils.isValidFiscalCode;
-import static com.kodikasgroup.App.newWindow;
 
 public class RegistrationController {
     private static final String CITIZEN_ENDPOINT = "/citizens";
@@ -29,11 +30,44 @@ public class RegistrationController {
     @FXML private TextField surnameField;
     @FXML private DatePicker dobField;
     @FXML private MenuButton categoryField;
-    @FXML private Button confirmButton;
+    @FXML private TextField placeOfBirthField;
 
     @FXML
     public void initialize() {
         objectMapper.registerModule(new JavaTimeModule());
+        addListeners();
+        setDatePickerDateFormat();
+    }
+
+    private void setDatePickerDateFormat() {
+        dobField.setConverter(new StringConverter<LocalDate>() {
+            private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+            @Override
+            public String toString(LocalDate localDate) {
+                if (localDate == null)
+                    return "";
+                return dateTimeFormatter.format(localDate);
+            }
+
+            @Override
+            public LocalDate fromString(String dateString) {
+                if (dateString == null || dateString.trim().isEmpty()) {
+                    return null;
+                }
+                return LocalDate.parse(dateString, dateTimeFormatter);
+            }
+        });
+    }
+
+    private void addListeners() {
+        categoryField.getItems().forEach(
+                menuItem -> menuItem.setOnAction(
+                        actionEvent -> categoryField.setText(
+                                menuItem.getText()
+                        )
+                )
+        );
     }
 
     private boolean areEmpty() {
@@ -61,11 +95,15 @@ public class RegistrationController {
             // check if user is registered
             String fiscalCode = fiscalCodeField.getText();
             try {
-                String response = sendGET(CITIZEN_ENDPOINT +"/"+fiscalCode);
-                if (! response.equals("{}")) {
+                String response = sendGET(CITIZEN_ENDPOINT + "/" + fiscalCode);
+                if (!response.equals("{}")) {
                     // set registered to true
-                    response = sendPUT(CITIZEN_ENDPOINT+"/registered/"+fiscalCode, null);
+                    response = sendPUT(CITIZEN_ENDPOINT + "/registered/" + fiscalCode, null);
                     Citizen citizen = objectMapper.readValue(response, Citizen.class);
+                    Citizen insertedCitizen = getData();
+                    if (!citizen.equals(insertedCitizen)) {
+                        setRoot("anomalia");
+                    }
                 } else {
                     setRoot("anomalia");
                 }
@@ -73,5 +111,17 @@ public class RegistrationController {
                 e.printStackTrace();
             }
         }
+    }
+
+    private Citizen getData() {
+        return new Citizen(
+                fiscalCodeField.getText(),
+                Long.parseLong(cardNumberField.getText()),
+                nameField.getText(),
+                surnameField.getText(),
+                placeOfBirthField.getText(),
+                dobField.getValue(),
+                categoryField.getText()
+        );
     }
 }

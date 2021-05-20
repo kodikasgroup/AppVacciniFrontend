@@ -30,7 +30,7 @@ public class LoginController {
             hideErrorMessage();
             // TODO GOTO ADMIN PAGE
         } else if (text.equals("no vax")){
-            // TODO MANDA A FANCULO
+            // TODO EASTEREGG
         } else {
             if (isValidFiscalCode(text)) {
                 hideErrorMessage();
@@ -45,13 +45,12 @@ public class LoginController {
         try {
             String response = sendGET(CITIZEN_ENDPOINT +"/"+text);
             if (! response.equals("{}")) {
-                System.out.println(response);
                 Citizen citizen = objectMapper.readValue(response, Citizen.class);
                 // check if user is registered
                 if (citizen.isRegistered()){
                     // TODO go To Main Page
                 } else {
-                    setRoot("registration", 755, 300);
+                    setRoot("registration", 755, 400);
                 }
             } else {
                 showErrorMessage();
