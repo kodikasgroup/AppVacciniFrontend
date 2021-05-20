@@ -7,9 +7,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
-import java.util.regex.Pattern;
 
 import static com.kodikasgroup.utils.RequestMaker.sendGET;
+import static com.kodikasgroup.utils.Utils.isValidFiscalCode;
 
 public class LoginController {
     private static final String CITIZEN_ENDPOINT = "/citizens";
@@ -25,7 +25,7 @@ public class LoginController {
         } else if (text.equals("no vax")){
             // TODO MANDA A FANCULO
         } else {
-            if (checkFiscalCode(text)) {
+            if (isValidFiscalCode(text)) {
                 hideErrorMessage();
                 goToUserPage(text);
             } else {
@@ -51,11 +51,6 @@ public class LoginController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private boolean checkFiscalCode(String text) {
-        String pattern = "^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$";
-        return Pattern.matches(pattern, text);
     }
 
     private void showErrorMessage() {

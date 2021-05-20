@@ -37,13 +37,15 @@ public class RequestMaker {
         }
     }
 
-    public static void sendPUT(String endpoint, Object payload) throws IOException {
+    public static String sendPUT(String endpoint, Object payload) throws IOException {
         HttpURLConnection con = getConnection(endpoint, "PUT");
-        var jsonString = getJson(payload);
-        setPayload(jsonString, con);
-
+        if (payload != null) {
+            var jsonString = getJson(payload);
+            setPayload(jsonString, con);
+        }
         int responseCode = con.getResponseCode();
         logger.log(Level.ALL, () -> "PUT Response Code :: " + responseCode);
+        return con.getResponseMessage();
     }
 
     public static void sendPOST(String endpoint, Object payload) throws IOException {
