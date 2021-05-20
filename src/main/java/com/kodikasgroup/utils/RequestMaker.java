@@ -1,6 +1,8 @@
 package com.kodikasgroup.utils;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -12,7 +14,7 @@ import java.util.logging.Logger;
 public class RequestMaker {
 
     private static final String URL = "http://localhost:8080/";
-    private static final Gson gson = new Gson();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
     private static final Logger logger = Logger.getLogger(RequestMaker.class.getName());
 
     private RequestMaker(){}
@@ -92,8 +94,8 @@ public class RequestMaker {
     }
 
     //Converting the Object to JSONString
-    private static String getJson(Object object) {
-        String json = gson.toJson(object);
+    private static String getJson(Object object) throws JsonProcessingException {
+        String json = objectMapper.writeValueAsString(object);
         var nameValuePattern = "\\{\"name\":\"\",\"value\":";
         var validPattern = ",\"valid\":\\w+}";
         var helperPattern = "\"helper\":\\{\"observable\":\\{}}},";
@@ -101,5 +103,9 @@ public class RequestMaker {
         json = json.replaceAll(validPattern, "");
         json = json.replace(helperPattern, "");
         return json;
+    }
+
+    public static void initializeRequestMaker() {
+        objectMapper.registerModule(new JavaTimeModule());
     }
 }

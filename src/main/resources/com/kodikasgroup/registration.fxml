@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.RegistrationController">
+<AnchorPane maxHeight="250.0" maxWidth="755.0" minHeight="250.0" minWidth="755.0" prefHeight="250.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.RegistrationController">
     <TextField fx:id="fiscalCodeField" layoutX="32.0" layoutY="35.0" prefHeight="24.0" prefWidth="205.0" />
     <Text layoutX="32.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codice Fiscale" wrappingWidth="108.0" />
     <TextField fx:id="cardNumberField" layoutX="32.0" layoutY="85.0" prefHeight="24.0" prefWidth="205.0" />
@@ -29,5 +29,5 @@
           <MenuItem mnemonicParsing="false" text="paziente a rischio" />
       </items>
     </MenuButton>
-   <Button defaultButton="true" layoutX="290.0" layoutY="212.0" mnemonicParsing="false" onAction="#goToNextPage" prefHeight="24.0" prefWidth="114.0" text="Conferma" />
+   <Button fx:id="confirmButton" defaultButton="true" layoutX="290.0" layoutY="212.0" mnemonicParsing="false" onAction="#goToNextPage" prefHeight="24.0" prefWidth="114.0" text="Conferma" />
 </AnchorPane>

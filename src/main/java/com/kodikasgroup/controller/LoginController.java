@@ -1,6 +1,7 @@
 package com.kodikasgroup.controller;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.kodikasgroup.model.Citizen;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -8,14 +9,20 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
+import static com.kodikasgroup.App.setRoot;
 import static com.kodikasgroup.utils.RequestMaker.sendGET;
 import static com.kodikasgroup.utils.Utils.isValidFiscalCode;
 
 public class LoginController {
     private static final String CITIZEN_ENDPOINT = "/citizens";
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     @FXML private TextField inputField;
     @FXML private Text errorMessage;
+
+    public LoginController() {
+        objectMapper.registerModule(new JavaTimeModule());
+    }
 
     public void goToNextPage() {
         String text = inputField.getText();
@@ -38,12 +45,13 @@ public class LoginController {
         try {
             String response = sendGET(CITIZEN_ENDPOINT +"/"+text);
             if (! response.equals("{}")) {
-                Citizen citizen = new Gson().fromJson(response, Citizen.class);
+                System.out.println(response);
+                Citizen citizen = objectMapper.readValue(response, Citizen.class);
                 // check if user is registered
                 if (citizen.isRegistered()){
                     // TODO go To Main Page
                 } else {
-                    // TODO go To Registration Page
+                    setRoot("registration", 755, 300);
                 }
             } else {
                 showErrorMessage();
