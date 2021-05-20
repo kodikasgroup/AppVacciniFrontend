@@ -30,7 +30,7 @@ public class LoginController {
             hideErrorMessage();
             // TODO GOTO ADMIN PAGE
         } else if (text.equals("no vax")){
-            // TODO MANDA A FANCULO
+            // TODO EASTEREGG
         } else {
             if (isValidFiscalCode(text)) {
                 hideErrorMessage();
