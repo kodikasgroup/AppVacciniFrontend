@@ -8,6 +8,8 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,7 +19,8 @@ public class RequestMaker {
     private static final ObjectMapper objectMapper = new ObjectMapper();
     private static final Logger logger = Logger.getLogger(RequestMaker.class.getName());
 
-    private RequestMaker(){}
+    private RequestMaker() {
+    }
 
     public static void sendDELETE(String endpoint) throws IOException {
         HttpURLConnection con = getConnection(endpoint, "DELETE");
@@ -47,18 +50,16 @@ public class RequestMaker {
         }
         int responseCode = con.getResponseCode();
         logger.log(Level.ALL, () -> "PUT Response Code :: " + responseCode);
-        return con.getResponseMessage();
+        return getResponse(con);
     }
 
-    public static void sendPOST(String endpoint, Object payload) throws IOException {
+    public static String sendPOST(String endpoint, Object payload) throws IOException {
         HttpURLConnection con = getConnection(endpoint, "POST");
         var jsonString = getJson(payload);
-        // remove ids
-        jsonString = jsonString.replaceAll("\"id\":\\w+,", "");
         setPayload(jsonString, con);
-
         int responseCode = con.getResponseCode();
         logger.log(Level.ALL, () -> "POST Response Code :: " + responseCode);
+        return getResponse(con);
     }
 
     private static void setPayload(String payload, HttpURLConnection con) throws IOException {
@@ -81,31 +82,29 @@ public class RequestMaker {
     }
 
     private static String getResponse(HttpURLConnection con) throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
         StringBuilder response = new StringBuilder();
 
-        while ((inputLine = in.readLine()) != null) {
+        while ((inputLine = bufferedReader.readLine()) != null) {
             response.append(inputLine);
         }
-        in.close();
+        bufferedReader.close();
 
         return response.toString();
     }
 
     //Converting the Object to JSONString
     private static String getJson(Object object) throws JsonProcessingException {
-        String json = objectMapper.writeValueAsString(object);
-        var nameValuePattern = "\\{\"name\":\"\",\"value\":";
-        var validPattern = ",\"valid\":\\w+}";
-        var helperPattern = "\"helper\":\\{\"observable\":\\{}}},";
-        json = json.replace(nameValuePattern, "");
-        json = json.replaceAll(validPattern, "");
-        json = json.replace(helperPattern, "");
-        return json;
+        return objectMapper.writeValueAsString(object);
     }
 
     public static void initializeRequestMaker() {
+        Handler handlerObj = new ConsoleHandler();
+        handlerObj.setLevel(Level.ALL);
+        logger.addHandler(handlerObj);
+        logger.setLevel(Level.ALL);
+        logger.setUseParentHandlers(false);
         objectMapper.registerModule(new JavaTimeModule());
     }
 }

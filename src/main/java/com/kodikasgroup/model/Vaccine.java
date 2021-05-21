@@ -1,5 +1,7 @@
 package com.kodikasgroup.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Vaccine {
 
     private long vaccineID;
@@ -18,4 +21,9 @@ public class Vaccine {
     private VaccinationCampaign vaccinationCampaign;
 //    private Set<Availability> availabilities = new HashSet<>();
 //    private Set<Entitled> entitleds = new HashSet<>();
+
+    public Vaccine(String vaccineName, Long quantity) {
+        this.vaccineName = vaccineName;
+        this.quantity = quantity;
+    }
 }
