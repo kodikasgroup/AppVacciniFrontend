@@ -4,10 +4,13 @@ import com.kodikasgroup.model.Vaccine;
 import com.kodikasgroup.utils.TempMemory;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
+import java.util.List;
 
 import static com.kodikasgroup.App.newWindow;
 import static com.kodikasgroup.App.setRoot;
@@ -15,11 +18,25 @@ import static com.kodikasgroup.App.setRoot;
 public class InsertNewVaccinationCampaignController {
     @FXML private TableView<Vaccine> vaccineTable;
     @FXML private TextField issueNameField;
+    @FXML private TableColumn<Vaccine, Long> idVaccinoColumn;
+    @FXML private TableColumn<Vaccine, String> nomeVaccinoColumn;
+    @FXML private TableColumn<Vaccine, Long> quantitaColumn;
     private TempMemory tempMemory;
+
+    private void initializeColumns() {
+        idVaccinoColumn.setCellValueFactory(new PropertyValueFactory<>("vaccineID"));
+        nomeVaccinoColumn.setCellValueFactory(new PropertyValueFactory<>("vaccineName"));
+        quantitaColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+    }
 
     @FXML
     public void initialize() {
         tempMemory = TempMemory.getINSTANCE();
+        List<Vaccine> vaccines = tempMemory.getVaccines();
+        initializeColumns();
+        if (!vaccines.isEmpty()) {
+            vaccines.forEach(vaccine -> vaccineTable.getItems().add(vaccine));
+        }
     }
 
     private void goBack() throws IOException {
@@ -37,6 +54,7 @@ public class InsertNewVaccinationCampaignController {
         if (issueName.isEmpty() || vaccines.isEmpty()) {
             newWindow("popup", 300, 200);
         } else {
+            // TODO get all data and send to backend
             goBack();
         }
     }

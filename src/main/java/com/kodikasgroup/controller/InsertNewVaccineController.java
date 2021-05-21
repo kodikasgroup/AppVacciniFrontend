@@ -55,7 +55,6 @@ public class InsertNewVaccineController {
         );
 
         String response = RequestMaker.sendPOST(VACCINE_ENDPOINT, vaccine);
-        System.out.println(response);
         vaccine = objectMapper.readValue(response, Vaccine.class);
         tempMemory.addVaccine(vaccine);
         changeWindow();
