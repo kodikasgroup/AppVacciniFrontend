@@ -4,9 +4,11 @@ import com.kodikasgroup.App;
 
 import java.io.IOException;
 
+
 public class AdminMainPageController {
 
-    public void goToAddVaccine() {
+    public void goToAddVaccine() throws IOException {
+        App.setRoot("insertNewVaccine", 600, 160);
     }
 
     public void goToModifyVaccinationCampaing() {

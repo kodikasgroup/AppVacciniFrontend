@@ -50,7 +50,7 @@ public class InsertNewVaccinationCampaignController {
     }
 
     private void goBack() throws IOException {
-        tempMemory.setFromVaccinationCampaignController(true);
+        tempMemory.setFromVaccinationCampaignController(false);
         setRoot("adminMainPage", 600, 400);
     }
 
