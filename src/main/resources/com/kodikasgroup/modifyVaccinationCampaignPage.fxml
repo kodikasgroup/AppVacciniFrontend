@@ -3,11 +3,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Button layoutX="169.0" layoutY="77.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="262.0" text="Modifica Orari Campagna Vaccinale" />
-      <Button layoutX="169.0" layoutY="162.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="262.0" text="Modifica Scorte Vaccino" />
-      <Button layoutX="169.0" layoutY="246.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="262.0" text="Aggiungi Ambulatorio" />
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.ModifyVaccinationCampaignController">
+   <Button layoutX="169.0" layoutY="77.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="262.0" text="Modifica Orari Campagna Vaccinale" onAction="#goToModifyVaccinationCampaignTimetables"/>
+   <Button layoutX="169.0" layoutY="162.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="262.0" text="Modifica Scorte Vaccino" onAction="#goToModifyVaccineAvailability"/>
+   <Button layoutX="169.0" layoutY="246.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="262.0" text="Aggiungi Ambulatorio" onAction="#goToAddClinic"/>
+   <Button cancelButton="true" layoutX="269.0" layoutY="346.0" mnemonicParsing="false" text="Indietro" onAction="#goBack"/>
 </AnchorPane>

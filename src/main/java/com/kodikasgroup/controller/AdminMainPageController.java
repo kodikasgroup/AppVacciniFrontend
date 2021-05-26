@@ -11,7 +11,8 @@ public class AdminMainPageController {
         App.setRoot("insertNewVaccine", 600, 160);
     }
 
-    public void goToModifyVaccinationCampaing() {
+    public void goToModifyVaccinationCampaign() throws IOException {
+        App.setRoot("modifyVaccinationCampaignPage");
     }
 
     public void goToAssignVaccineCategory() throws IOException {
