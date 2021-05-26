@@ -5,19 +5,19 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="218.0" prefWidth="484.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.ModifyVaccineAvailabilityController">
-   <MenuButton fx:id="vaccineMenuButton" layoutX="31.0" layoutY="44.0" mnemonicParsing="false" text="Vaccino" />
-   <Label layoutX="31.0" layoutY="25.0" text="Seleziona Vaccino:" />
-   <ButtonBar layoutX="118.0" layoutY="164.0" prefHeight="40.0" prefWidth="159.0">
-      <buttons>
-         <Button alignment="CENTER" mnemonicParsing="false" onAction="#cancel" text="Annulla" />
-         <Button fx:id="confirmButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="599.0" layoutY="17.0" mnemonicParsing="false" onAction="#confirm" text="Conferma" />
-      </buttons>
-      <opaqueInsets>
-         <Insets />
-      </opaqueInsets>
-   </ButtonBar>
-   <TextField fx:id="addAvailabilityField" layoutX="218.0" layoutY="44.0" />
-   <Label layoutX="218.0" layoutY="25.0" text="Di quanto vuoi aumentare le scorte?" />
-   <TextField fx:id="actualAvailabilityField" disable="true" editable="false" layoutX="31.0" layoutY="107.0" prefHeight="24.0" prefWidth="156.0" />
-   <Label layoutX="31.0" layoutY="88.0" text="Scorte Attuali:" />
+	<MenuButton fx:id="vaccineMenuButton" layoutX="31.0" layoutY="44.0" mnemonicParsing="false" text="Vaccino" />
+	<Label layoutX="31.0" layoutY="25.0" text="Seleziona Vaccino:" />
+	<ButtonBar layoutX="118.0" layoutY="164.0" prefHeight="40.0" prefWidth="159.0">
+		<buttons>
+			<Button alignment="CENTER" mnemonicParsing="false" onAction="#cancel" text="Annulla" />
+			<Button fx:id="confirmButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="599.0" layoutY="17.0" mnemonicParsing="false" onAction="#confirm" text="Conferma" />
+		</buttons>
+		<opaqueInsets>
+			<Insets />
+		</opaqueInsets>
+	</ButtonBar>
+	<TextField fx:id="addAvailabilityField" layoutX="218.0" layoutY="44.0" />
+	<Label layoutX="218.0" layoutY="25.0" text="Di quanto vuoi aumentare le scorte?" />
+	<TextField fx:id="actualAvailabilityField" disable="true" editable="false" layoutX="31.0" layoutY="107.0" prefHeight="24.0" prefWidth="156.0" />
+	<Label layoutX="31.0" layoutY="88.0" text="Scorte Attuali:" />
 </AnchorPane>

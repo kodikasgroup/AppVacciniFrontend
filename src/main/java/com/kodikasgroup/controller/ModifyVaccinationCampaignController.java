@@ -6,13 +6,13 @@ import java.io.IOException;
 
 public class ModifyVaccinationCampaignController {
 
-    public void goBack() throws IOException {
-        App.setRoot("adminMainPage");
-    }
+	public void goBack() throws IOException {
+		App.setRoot("adminMainPage");
+	}
 
-    public void goToModifyVaccinationCampaignTimetables() {
-    }
+	public void goToModifyVaccinationCampaignTimetables() {
+	}
 
-    public void goToAddClinic() {
-    }
+	public void goToAddClinic() {
+	}
 }

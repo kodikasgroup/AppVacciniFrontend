@@ -11,12 +11,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Entitled {
-    private long entitledId;
-    private String category;
-    private Vaccine vaccine;
+	private long entitledId;
+	private String category;
+	private Vaccine vaccine;
 
-    public Entitled(String category, Vaccine vaccine) {
-        this.category = category;
-        this.vaccine = vaccine;
-    }
+	public Entitled(String category, Vaccine vaccine) {
+		this.category = category;
+		this.vaccine = vaccine;
+	}
 }

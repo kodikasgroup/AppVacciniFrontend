@@ -10,11 +10,11 @@ import java.time.LocalTime;
 @Setter
 @EqualsAndHashCode
 public class Availability {
-   IdAvailability availabilityId;
-    // Date
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private LocalTime startHour;
-    private LocalTime endHour;
-    private Vaccine vaccine;
+	IdAvailability availabilityId;
+	// Date
+	private LocalDate startDate;
+	private LocalDate endDate;
+	private LocalTime startHour;
+	private LocalTime endHour;
+	private Vaccine vaccine;
 }

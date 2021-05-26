@@ -10,6 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class IdAvailability {
-    private String clinicName;
-    private Long idVaccine;
+	private String clinicName;
+	private Long idVaccine;
 }
