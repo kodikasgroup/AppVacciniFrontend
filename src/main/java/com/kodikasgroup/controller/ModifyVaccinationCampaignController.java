@@ -1,7 +1,6 @@
 package com.kodikasgroup.controller;
 
 import com.kodikasgroup.App;
-import javafx.event.ActionEvent;
 
 import java.io.IOException;
 
@@ -11,12 +10,9 @@ public class ModifyVaccinationCampaignController {
         App.setRoot("adminMainPage");
     }
 
-    public void goToModifyVaccinationCampaignTimetables(ActionEvent actionEvent) {
+    public void goToModifyVaccinationCampaignTimetables() {
     }
 
-    public void goToModifyVaccineAvailability(ActionEvent actionEvent) {
-    }
-
-    public void goToAddClinic(ActionEvent actionEvent) {
+    public void goToAddClinic() {
     }
 }
