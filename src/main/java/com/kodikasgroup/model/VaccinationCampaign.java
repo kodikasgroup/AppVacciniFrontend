@@ -17,4 +17,9 @@ public class VaccinationCampaign {
     private long campaignID;
     private String diseaseName;
     private Set<Vaccine> vaccines = new HashSet<>();
+
+    public VaccinationCampaign(String diseaseName, Set<Vaccine> vaccines) {
+        this.diseaseName = diseaseName;
+        this.vaccines = vaccines;
+    }
 }

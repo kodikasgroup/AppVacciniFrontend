@@ -1,6 +1,5 @@
 package com.kodikasgroup.utils;
 
-import com.kodikasgroup.model.VaccinationCampaign;
 import com.kodikasgroup.model.Vaccine;
 
 import java.util.ArrayList;
@@ -23,6 +22,10 @@ public class TempMemory {
 
     public void addVaccine(Vaccine vaccine) {
         vaccines.add(vaccine);
+    }
+
+    public void resetVaccines() {
+        vaccines = new ArrayList<>();
     }
 
     public boolean isFromVaccinationCampaignController() {

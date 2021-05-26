@@ -13,11 +13,9 @@ import lombok.Setter;
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Vaccine {
-
     private long vaccineID;
     private String vaccineName;
     private Long quantity;
-    private VaccinationCampaign vaccinationCampaign;
 //    private Set<Availability> availabilities = new HashSet<>();
 //    private Set<Entitled> entitleds = new HashSet<>();
 
