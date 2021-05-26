@@ -10,7 +10,7 @@
    <Button layoutX="178.0" layoutY="129.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="244.0"
            text="Modifica Campagna Vaccinale" onAction="#goToModifyVaccinationCampaing"/>
    <Button layoutX="195.0" layoutY="200.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="211.0"
-           text="Associa Vaccino a Categoria" onAction="#goToAssociateVaccineCategory"/>
+           text="Associa Vaccino a Categoria" onAction="#goToAssignVaccineCategory"/>
    <Button layoutX="179.0" layoutY="62.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="244.0"
            text="Aggiungi Campagna Vaccinale" onAction="#goToAddVaccinationCampaign"/>
 </AnchorPane>

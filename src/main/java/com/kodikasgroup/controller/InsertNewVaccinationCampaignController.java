@@ -1,6 +1,5 @@
 package com.kodikasgroup.controller;
 
-import com.kodikasgroup.App;
 import com.kodikasgroup.model.VaccinationCampaign;
 import com.kodikasgroup.model.Vaccine;
 import com.kodikasgroup.utils.RequestMaker;
