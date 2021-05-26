@@ -2,6 +2,7 @@ package com.kodikasgroup.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kodikasgroup.App;
+import com.kodikasgroup.model.Vaccine;
 import com.kodikasgroup.model.VaccineWrapper;
 import com.kodikasgroup.utils.RequestMaker;
 import javafx.event.ActionEvent;
@@ -12,7 +13,9 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.regex.Pattern;
 
 import static com.kodikasgroup.App.newWindow;
 
@@ -25,11 +28,6 @@ public class ModifyVaccineAvailabilityController {
     private static VaccineWrapper vaccineWrapper;
     private static final String VACCINE_ENDPOINT = "/vaccines";
 
-
-    @FXML
-    public void initialize() throws IOException {
-        initializeVaccineMenuButton();
-    }
 
     private void initializeVaccineMenuButton() throws IOException {
         AtomicReference<Integer> counter = new AtomicReference<>(0);
@@ -68,6 +66,17 @@ public class ModifyVaccineAvailabilityController {
         }
     }
 
+    @FXML
+    public void initialize() throws IOException {
+        initializeVaccineMenuButton();
+    }
+
+    private boolean isValidData() {
+        String vaccineQuantity = addAvailabilityField.getText();
+        String pattern = "^\\d+$";
+        return Pattern.matches(pattern, vaccineQuantity);
+    }
+
     public void goBack() throws IOException {
         App.setRoot("adminMainPage", 600, 450);
     }
@@ -77,6 +86,19 @@ public class ModifyVaccineAvailabilityController {
     }
 
     public void confirm() throws IOException {
-        goBack();
+        Optional<Vaccine> optionalVaccine = vaccineWrapper.getVaccines().stream()
+                .filter(vaccine -> vaccine.getVaccineName().equals(vaccineMenuButton.getText()))
+                .findFirst();
+
+        if (isValidData() && optionalVaccine.isPresent()) {
+            RequestMaker.sendPUT(
+                    VACCINE_ENDPOINT + "/" +
+                    optionalVaccine.get().getVaccineID() +
+                    "/quantity/" + addAvailabilityField.getText()
+            );
+            goBack();
+        } else {
+            newWindow("popup", 300, 200);
+        }
     }
 }

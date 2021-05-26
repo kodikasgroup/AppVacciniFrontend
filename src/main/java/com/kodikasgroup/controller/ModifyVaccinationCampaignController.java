@@ -13,10 +13,6 @@ public class ModifyVaccinationCampaignController {
     public void goToModifyVaccinationCampaignTimetables() {
     }
 
-    public void goToModifyVaccineAvailability() throws IOException {
-        App.setRoot("modifyVaccineAvailability", 484, 250);
-    }
-
     public void goToAddClinic() {
     }
 }

@@ -53,6 +53,13 @@ public class RequestMaker {
         return getResponse(con);
     }
 
+    public static String sendPUT(String endpoint) throws IOException {
+        HttpURLConnection con = getConnection(endpoint, "PUT");
+        int responseCode = con.getResponseCode();
+        logger.log(Level.ALL, () -> "PUT Response Code :: " + responseCode);
+        return getResponse(con);
+    }
+
     public static String sendPOST(String endpoint, Object payload) throws IOException {
         HttpURLConnection con = getConnection(endpoint, "POST");
         var jsonString = getJson(payload);
