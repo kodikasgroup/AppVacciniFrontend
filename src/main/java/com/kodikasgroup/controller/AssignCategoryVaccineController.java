@@ -18,12 +18,12 @@ import static com.kodikasgroup.App.newWindow;
 import static com.kodikasgroup.App.setRoot;
 
 public class AssignCategoryVaccineController {
-    private static final String ENTITLED_ENDPOINT = "/entitled";
-    private static final String VACCINE_ENDPOINT = "/vaccines";
     @FXML private MenuButton vaccineMenuButton;
     @FXML private MenuButton categoryMenuButton;
     @FXML private Button confirmButton;
     private static final ObjectMapper objectMapper = new ObjectMapper();
+    private static final String ENTITLED_ENDPOINT = "/entitled";
+    private static final String VACCINE_ENDPOINT = "/vaccines";
     private static VaccineWrapper vaccineWrapper;
 
     @FXML

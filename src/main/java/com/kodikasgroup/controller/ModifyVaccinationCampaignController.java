@@ -1,7 +1,6 @@
 package com.kodikasgroup.controller;
 
 import com.kodikasgroup.App;
-import javafx.event.ActionEvent;
 
 import java.io.IOException;
 
