@@ -8,13 +8,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="218.0" prefWidth="484.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.AssignCategoryVaccineController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="218.0" prefWidth="484.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.ModifyVaccineAvailabilityController">
    <MenuButton fx:id="vaccineMenuButton" layoutX="31.0" layoutY="44.0" mnemonicParsing="false" text="Vaccino" />
    <Label layoutX="31.0" layoutY="25.0" text="Seleziona Vaccino:" />
    <ButtonBar layoutX="118.0" layoutY="164.0" prefHeight="40.0" prefWidth="159.0">
       <buttons>
          <Button alignment="CENTER" mnemonicParsing="false" onAction="#cancel" text="Annulla" />
-         <Button fx:id="confirmButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="599.0" layoutY="17.0" mnemonicParsing="false" onAction="#confirm" text="Conferma" />
+         <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="599.0" layoutY="17.0" mnemonicParsing="false" onAction="#confirm" text="Conferma" />
       </buttons>
       <opaqueInsets>
          <Insets />
