@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="336.0"
 			prefWidth="519.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-			fx:controller="com.kodikasgroup.controller.addAvailabilityController">
+			fx:controller="com.kodikasgroup.controller.AddAvailabilityController">
 	<MenuButton layoutX="187.0" layoutY="36.0" mnemonicParsing="false" text="Vaccino">
 		<items>
 			<MenuItem mnemonicParsing="false" text="Action 1"/>

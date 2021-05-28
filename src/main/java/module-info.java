@@ -3,6 +3,7 @@ module com.kodikasgroup {
 	requires javafx.fxml;
 	requires com.fasterxml.jackson.databind;
 	requires com.fasterxml.jackson.datatype.jsr310;
+	requires com.fasterxml.jackson.annotation;
 	requires java.logging;
 	requires java.sql;
 	requires static lombok;
