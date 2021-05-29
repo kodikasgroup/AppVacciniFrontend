@@ -64,7 +64,7 @@ public class RequestMaker {
 		HttpURLConnection con = getConnection(endpoint, "POST");
 		var jsonString = getJson(payload);
 		setPayload(jsonString, con);
-//        System.out.println(jsonString);
+        System.out.println(jsonString);
 		int responseCode = con.getResponseCode();
 		logger.log(Level.ALL, () -> "POST Response Code :: " + responseCode);
 		return getResponse(con);

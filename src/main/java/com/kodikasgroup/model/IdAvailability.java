@@ -12,4 +12,8 @@ import lombok.Setter;
 public class IdAvailability {
 	private String clinicName;
 	private Long idVaccine;
+
+	public IdAvailability(String clinicName) {
+		this.clinicName = clinicName;
+	}
 }
