@@ -5,11 +5,11 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.PopupController">
-   <Button fx:id="closeButton" layoutX="123.0" layoutY="162.0" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
-   <Text fill="RED" layoutX="46.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Non sono presenti vaccini nel nostro database, prima di continuare aggiungi un vaccino" wrappingWidth="208.6923828125" />
-   <Text fill="RED" layoutX="120.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ERRORE">
-      <font>
-         <Font name="System Bold" size="13.0" />
-      </font>
-   </Text>
+	<Button fx:id="closeButton" layoutX="123.0" layoutY="162.0" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
+	<Text fill="RED" layoutX="46.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Non sono presenti vaccini nel nostro database, prima di continuare aggiungi un vaccino" wrappingWidth="208.6923828125" />
+	<Text fill="RED" layoutX="120.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ERRORE">
+		<font>
+			<Font name="System Bold" size="13.0" />
+		</font>
+	</Text>
 </AnchorPane>

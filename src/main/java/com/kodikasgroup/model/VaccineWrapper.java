@@ -12,5 +12,5 @@ import java.util.List;
 @Getter
 @Setter
 public class VaccineWrapper {
-    private List<Vaccine> vaccines;
+	private List<Vaccine> vaccines;
 }

@@ -14,57 +14,57 @@ import static com.kodikasgroup.utils.RequestMaker.sendGET;
 import static com.kodikasgroup.utils.Utils.isValidFiscalCode;
 
 public class LoginController {
-    private static final String CITIZEN_ENDPOINT = "/citizens";
-    private static final ObjectMapper objectMapper = new ObjectMapper();
+	private static final String CITIZEN_ENDPOINT = "/citizens";
+	private static final ObjectMapper objectMapper = new ObjectMapper();
 
-    @FXML private TextField inputField;
-    @FXML private Text errorMessage;
+	@FXML private TextField inputField;
+	@FXML private Text errorMessage;
 
-    public LoginController() {
-        objectMapper.registerModule(new JavaTimeModule());
-    }
+	public LoginController() {
+		objectMapper.registerModule(new JavaTimeModule());
+	}
 
-    public void goToNextPage() {
-        String text = inputField.getText();
-        if (text.equals("admin")) {
-            hideErrorMessage();
-            // TODO GOTO ADMIN PAGE
-        } else if (text.equals("no vax")){
-            // TODO EASTEREGG
-        } else {
-            if (isValidFiscalCode(text)) {
-                hideErrorMessage();
-                goToUserPage(text);
-            } else {
-                showErrorMessage();
-            }
-        }
-    }
+	public void goToNextPage() {
+		String text = inputField.getText();
+		if (text.equals("admin")) {
+			hideErrorMessage();
+			// TODO GOTO ADMIN PAGE
+		} else if (text.equals("no vax")){
+			// TODO EASTEREGG
+		} else {
+			if (isValidFiscalCode(text)) {
+				hideErrorMessage();
+				goToUserPage(text);
+			} else {
+				showErrorMessage();
+			}
+		}
+	}
 
-    private void goToUserPage(String text) {
-        try {
-            String response = sendGET(CITIZEN_ENDPOINT +"/"+text);
-            if (! response.equals("{}")) {
-                Citizen citizen = objectMapper.readValue(response, Citizen.class);
-                // check if user is registered
-                if (citizen.isRegistered()){
-                    // TODO go To Main Page
-                } else {
-                    setRoot("registration", 755, 400);
-                }
-            } else {
-                showErrorMessage();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+	private void goToUserPage(String text) {
+		try {
+			String response = sendGET(CITIZEN_ENDPOINT +"/"+text);
+			if (! response.equals("{}")) {
+				Citizen citizen = objectMapper.readValue(response, Citizen.class);
+				// check if user is registered
+				if (citizen.isRegistered()){
+					// TODO go To Main Page
+				} else {
+					setRoot("registration", 755, 400);
+				}
+			} else {
+				showErrorMessage();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
-    private void showErrorMessage() {
-        errorMessage.setVisible(true);
-    }
+	private void showErrorMessage() {
+		errorMessage.setVisible(true);
+	}
 
-    private void hideErrorMessage() {
-        errorMessage.setVisible(false);
-    }
+	private void hideErrorMessage() {
+		errorMessage.setVisible(false);
+	}
 }

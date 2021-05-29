@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="519.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.AddAvailabilityController">
+	<MenuButton fx:id="vaccineMenuButton" layoutX="187.0" layoutY="36.0" mnemonicParsing="false" text="Vaccino">
+	</MenuButton>
+	<Label layoutX="179.0" layoutY="14.0" prefHeight="16.0" prefWidth="132.0" text="Seleziona Vaccino:" />
+	<TextField fx:id="startHourField" layoutX="14.0" layoutY="128.0" promptText="09:00" />
+	<Label layoutX="16.0" layoutY="101.0" text="Ora Inizio:" />
+	<TextField fx:id="endHourField" layoutX="16.0" layoutY="199.0" promptText="15:00" />
+	<Label layoutX="18.0" layoutY="173.0" text="Ora Fine:" />
+	<DatePicker fx:id="startDateField" layoutX="292.0" layoutY="128.0" promptText="01/02/2021" />
+	<DatePicker fx:id="endDateField" layoutX="292.0" layoutY="199.0" promptText="05/02/2021" />
+	<Label layoutX="292.0" layoutY="103.0" text="Data Inizio:" />
+	<Label layoutX="292.0" layoutY="174.0" text="Data Fine:" />
+	<ButtonBar layoutX="305.0" layoutY="354.0" prefHeight="40.0" prefWidth="198.0">
+		<buttons>
+			<Button alignment="CENTER" mnemonicParsing="false" onAction="#cancel" text="Annulla" />
+			<Button fx:id="confirmButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="599.0" layoutY="17.0" mnemonicParsing="false" onAction="#confirm" text="Conferma" />
+		</buttons>
+		<opaqueInsets>
+			<Insets />
+		</opaqueInsets>
+	</ButtonBar>
+   <TextField fx:id="clinicNameField" layoutX="16.0" layoutY="268.0" />
+   <Label layoutX="19.0" layoutY="241.0" text="Nome Ambulatorio:" />
+</AnchorPane>
