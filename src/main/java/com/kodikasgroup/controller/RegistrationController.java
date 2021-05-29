@@ -3,6 +3,7 @@ package com.kodikasgroup.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.kodikasgroup.model.Citizen;
+import com.kodikasgroup.utils.Utils;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
@@ -36,28 +37,7 @@ public class RegistrationController {
 	public void initialize() {
 		objectMapper.registerModule(new JavaTimeModule());
 		addListeners();
-		setDatePickerDateFormat();
-	}
-
-	private void setDatePickerDateFormat() {
-		dobField.setConverter(new StringConverter<LocalDate>() {
-			private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-			@Override
-			public String toString(LocalDate localDate) {
-				if (localDate == null)
-					return "";
-				return dateTimeFormatter.format(localDate);
-			}
-
-			@Override
-			public LocalDate fromString(String dateString) {
-				if (dateString == null || dateString.trim().isEmpty()) {
-					return null;
-				}
-				return LocalDate.parse(dateString, dateTimeFormatter);
-			}
-		});
+		Utils.setDatePickerDateFormat(dobField);
 	}
 
 	private void addListeners() {

@@ -24,6 +24,6 @@ public class AdminMainPageController {
 	}
 
 	public void goToAddAvailabilityPage() throws IOException {
-		App.setRoot("addAvailabilityPage", 500, 360);
+		App.setRoot("addAvailabilityPage", 520, 450);
 	}
 }

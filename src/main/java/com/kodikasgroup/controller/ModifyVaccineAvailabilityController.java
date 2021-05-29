@@ -5,7 +5,6 @@ import com.kodikasgroup.App;
 import com.kodikasgroup.model.Vaccine;
 import com.kodikasgroup.model.VaccineWrapper;
 import com.kodikasgroup.utils.RequestMaker;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
