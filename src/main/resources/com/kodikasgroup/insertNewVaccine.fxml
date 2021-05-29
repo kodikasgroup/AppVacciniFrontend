@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="140.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.InsertNewVaccineController">
+    <Text layoutX="51.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Vaccino"/>
+    <TextField fx:id="vaccineNameField" layoutX="51.0" layoutY="46.0"/>
+    <Text layoutX="324.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantità"/>
+    <TextField fx:id="vaccineQuantityField" layoutX="324.0" layoutY="45.0"/>
+    <ButtonBar layoutX="180.0" layoutY="85.0" prefHeight="40.0" prefWidth="200.0">
+      <buttons>
+          <Button cancelButton="true" mnemonicParsing="false" text="Annulla" onAction="#cancel"/>
+          <Button defaultButton="true" mnemonicParsing="false" text="Conferma" onAction="#confirm"/>
+      </buttons>
+    </ButtonBar>
+</AnchorPane>
