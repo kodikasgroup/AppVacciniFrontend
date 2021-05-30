@@ -1,37 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.Availabilitydate">
    <children>
-      <HBox layoutX="14.0" layoutY="18.0" prefHeight="564.0" prefWidth="772.0">
+      <VBox layoutX="6.0" layoutY="10.0" prefHeight="547.0" prefWidth="778.0">
          <children>
-            <VBox prefHeight="564.0" prefWidth="272.0">
+            <HBox prefHeight="564.0" prefWidth="772.0">
                <children>
-                  <Label text="Lista giorni">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <HBox prefHeight="27.0" prefWidth="272.0">
+                  <VBox prefHeight="564.0" prefWidth="272.0">
                      <children>
-                        <Button fx:id="indietroclick" mnemonicParsing="false" onAction="#indietroclick" prefHeight="25.0" prefWidth="82.0" text="&lt;- Indietro " />
-                        <TextArea fx:id="datearea" prefHeight="37.0" prefWidth="101.0" />
-                        <Button fx:id="avanticlick" mnemonicParsing="false" onAction="#avanticlick" prefHeight="25.0" prefWidth="90.0" text="Avanti -&gt;" />
+                        <Label prefHeight="35.0" prefWidth="214.0" text="Lista giorni">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="27.0" prefWidth="272.0">
+                           <children>
+                              <Button fx:id="indietroclick" mnemonicParsing="false" onAction="#backroclick" prefHeight="25.0" prefWidth="82.0" text="&lt;- Indietro " />
+                              <TextArea fx:id="datearea" prefHeight="13.0" prefWidth="105.0" />
+                              <Button fx:id="avanticlick" mnemonicParsing="false" onAction="#forwardclick" prefHeight="25.0" prefWidth="90.0" text="Avanti -&gt;" />
+                           </children>
+                        </HBox>
+                        <ListView fx:id="dateview" prefHeight="300.0" prefWidth="280.0" />
                      </children>
-                  </HBox>
-                  <ListView fx:id="dateview" prefHeight="301.0" prefWidth="329.0" />
+                  </VBox>
+                  <StackPane prefHeight="383.0" prefWidth="216.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#onCLickShowTimetables" text="Conferma Giorno -&gt;" />
+                     </children>
+                  </StackPane>
+                  <VBox prefHeight="564.0" prefWidth="301.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="279.0" text="Lista Ore disponibili">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="36.0" prefWidth="301.0" />
+                        <Accordion />
+                        <ListView fx:id="timetables" prefHeight="300.0" prefWidth="280.0" />
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
+            </HBox>
+            <Pane prefHeight="345.0" prefWidth="778.0">
+               <children>
+                  <Button layoutX="273.0" layoutY="47.0" mnemonicParsing="false" onAction="#onClickConfirme" prefHeight="70.0" prefWidth="208.0" text="CONFERMA PRENOTAZIONE" />
+               </children>
+            </Pane>
          </children>
-      </HBox>
+      </VBox>
    </children>
 </AnchorPane>
