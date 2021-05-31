@@ -66,13 +66,11 @@ public class AddAvailabilityController {
 	}
 
 	private boolean isValidData() {
-		return isValidTime(startHourField) &&
-				isValidTime(endHourField) &&
-				startDateField.getValue() != null &&
-				endDateField.getValue() != null &&
-				! clinicNameField.getText().isEmpty() &&
-				startDateField.getValue().isBefore(endDateField.getValue()) &&
-				LocalTime.parse(startHourField.getText()).isBefore(LocalTime.parse(endHourField.getText()));
+		boolean validTime = isValidTime(startHourField) && isValidTime(endHourField);
+		boolean dateNotNull = startDateField.getValue() != null && endDateField.getValue() != null;
+		boolean clinicNotEmpty = ! clinicNameField.getText().isEmpty();
+		boolean validDate = startDateField.getValue().isBefore(endDateField.getValue());
+		return validTime && validDate && dateNotNull && clinicNotEmpty;
 	}
 
 	@FXML

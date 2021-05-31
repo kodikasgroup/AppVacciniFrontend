@@ -27,9 +27,9 @@
 			text="Nuovo Vaccino"/>
 	<TableView fx:id="vaccineTable" layoutX="21.0" layoutY="46.0" prefHeight="326.0" prefWidth="392.0">
 		<columns>
-			<TableColumn prefWidth="104.0" text="idVaccino" fx:id="idVaccinoColumn"/>
-			<TableColumn prefWidth="150.0" text="nomeVaccino" fx:id="nomeVaccinoColumn"/>
-			<TableColumn prefWidth="136.0" text="quantità" fx:id="quantitaColumn"/>
+			<TableColumn prefWidth="104.0" text="idVaccino" fx:id="vaccineIdColumn"/>
+			<TableColumn prefWidth="150.0" text="nomeVaccino" fx:id="vaccineNameColumn"/>
+			<TableColumn prefWidth="136.0" text="quantità" fx:id="quantityColumn"/>
 		</columns>
 	</TableView>
 	<Text layoutX="441.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Malattia"

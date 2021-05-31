@@ -24,18 +24,19 @@ public class InsertNewVaccinationCampaignController {
 	@FXML
 	private TextField issueNameField;
 	@FXML
-	private TableColumn<Vaccine, Long> idVaccinoColumn;
+	private TableColumn<Vaccine, Long> vaccineIdColumn;
 	@FXML
-	private TableColumn<Vaccine, String> nomeVaccinoColumn;
+	private TableColumn<Vaccine, String> vaccineNameColumn;
 	@FXML
-	private TableColumn<Vaccine, Long> quantitaColumn;
+	private TableColumn<Vaccine, Long> quantityColumn;
 	private TempMemory tempMemory;
 	private static final String VACCINATION_CAMPAIGN_ENDPOINT = "/vaccinationCampaign";
+	private static String issueName = "";
 
 	private void initializeColumns() {
-		idVaccinoColumn.setCellValueFactory(new PropertyValueFactory<>("vaccineID"));
-		nomeVaccinoColumn.setCellValueFactory(new PropertyValueFactory<>("vaccineName"));
-		quantitaColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+		vaccineIdColumn.setCellValueFactory(new PropertyValueFactory<>("vaccineID"));
+		vaccineNameColumn.setCellValueFactory(new PropertyValueFactory<>("vaccineName"));
+		quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 	}
 
 	@FXML
@@ -46,9 +47,13 @@ public class InsertNewVaccinationCampaignController {
 		if (!vaccines.isEmpty()) {
 			vaccines.forEach(vaccine -> vaccineTable.getItems().add(vaccine));
 		}
+		if (!issueName.isEmpty()) {
+			issueNameField.setText(issueName);
+		}
 	}
 
 	private void goBack() throws IOException {
+		issueName = "";
 		tempMemory.setFromVaccinationCampaignController(false);
 		setRoot("adminMainPage", 600, 400);
 	}
@@ -75,6 +80,7 @@ public class InsertNewVaccinationCampaignController {
 	}
 
 	public void insertVaccine() throws IOException {
+		issueName = issueNameField.getText();
 		tempMemory.setFromVaccinationCampaignController(true);
 		setRoot("insertNewVaccine", 600, 160);
 	}
