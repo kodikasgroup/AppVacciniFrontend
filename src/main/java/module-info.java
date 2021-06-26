@@ -6,7 +6,6 @@ module com.kodikasgroup {
     requires java.logging;
     requires java.sql;
     requires static lombok;
-    requires com.calendarfx.view;
 
     opens com.kodikasgroup to javafx.fxml;
     exports com.kodikasgroup;

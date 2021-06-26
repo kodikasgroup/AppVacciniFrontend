@@ -10,27 +10,27 @@
 
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="136.0"
-            prefWidth="484.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.AssignCategoryVaccineController">
-   <MenuButton fx:id="vaccineMenuButton" layoutX="31.0" layoutY="44.0" mnemonicParsing="false" text="Vaccino"/>
-   <Label layoutX="31.0" layoutY="25.0" text="Seleziona Vaccino:"/>
-   <MenuButton fx:id="categoryMenuButton" layoutX="291.0" layoutY="42.0" mnemonicParsing="false" text="paziente oncologico">
-      <items>
-         <MenuItem mnemonicParsing="false" text="paziente oncologico"/>
-         <MenuItem mnemonicParsing="false" text="paziente iperteso"/>
-         <MenuItem mnemonicParsing="false" text="paziente a rischio"/>
-         <MenuItem mnemonicParsing="false" text="età 70-79"/>
-         <MenuItem mnemonicParsing="false" text="over 80"/>
-      </items>
-   </MenuButton>
-   <Label layoutX="291.0" layoutY="23.0" text="Seleziona Categoria:"/>
-   <ButtonBar layoutX="118.0" layoutY="82.0" prefHeight="40.0" prefWidth="159.0">
-      <buttons>
-         <Button alignment="CENTER" mnemonicParsing="false" onAction="#cancel" text="Annulla"/>
-         <Button fx:id="confirmButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="599.0"
-                 layoutY="17.0" mnemonicParsing="false" onAction="#confirm" text="Conferma"/>
-      </buttons>
-      <opaqueInsets>
-         <Insets/>
-      </opaqueInsets>
-   </ButtonBar>
+			prefWidth="484.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.AssignCategoryVaccineController">
+	<MenuButton fx:id="vaccineMenuButton" layoutX="31.0" layoutY="44.0" mnemonicParsing="false" text="Vaccino"/>
+	<Label layoutX="31.0" layoutY="25.0" text="Seleziona Vaccino:"/>
+	<MenuButton fx:id="categoryMenuButton" layoutX="291.0" layoutY="42.0" mnemonicParsing="false" text="paziente oncologico">
+		<items>
+			<MenuItem mnemonicParsing="false" text="paziente oncologico"/>
+			<MenuItem mnemonicParsing="false" text="paziente iperteso"/>
+			<MenuItem mnemonicParsing="false" text="paziente a rischio"/>
+			<MenuItem mnemonicParsing="false" text="età 70-79"/>
+			<MenuItem mnemonicParsing="false" text="over 80"/>
+		</items>
+	</MenuButton>
+	<Label layoutX="291.0" layoutY="23.0" text="Seleziona Categoria:"/>
+	<ButtonBar layoutX="118.0" layoutY="82.0" prefHeight="40.0" prefWidth="159.0">
+		<buttons>
+			<Button alignment="CENTER" mnemonicParsing="false" onAction="#cancel" text="Annulla"/>
+			<Button fx:id="confirmButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="599.0"
+					layoutY="17.0" mnemonicParsing="false" onAction="#confirm" text="Conferma"/>
+		</buttons>
+		<opaqueInsets>
+			<Insets/>
+		</opaqueInsets>
+	</ButtonBar>
 </AnchorPane>

@@ -10,7 +10,7 @@
 			prefWidth="300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.PopupController">
 	<Button layoutX="123.0" layoutY="162.0" mnemonicParsing="false" text="Close" onAction="#closeWindow" fx:id="closeButton"/>
 	<Text fill="RED" layoutX="27.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0"
-		  text="Alcuni dei Dati inseriti non sono validi" wrappingWidth="245.6923828125"/>
+		  text="Attenzione non appartieni alle categorie che attualmente possono prenotare." wrappingWidth="245.6923828125"/>
 	<Text fill="RED" layoutX="120.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ERRORE">
 		<font>
 			<Font name="System Bold" size="13.0"/>
