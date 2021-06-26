@@ -12,7 +12,6 @@ module com.kodikasgroup {
     exports com.kodikasgroup.controller;
     exports com.kodikasgroup.model;
     exports com.kodikasgroup.wrapper;
-    exports com.kodikasgroup.id;
     opens com.kodikasgroup.controller to javafx.fxml;
 
 }

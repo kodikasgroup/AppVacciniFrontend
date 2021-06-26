@@ -66,10 +66,6 @@ public class RequestMaker {
 
 	public static String sendPUT(String endpoint) throws IOException {
 		HttpURLConnection con = getConnection(endpoint, "PUT");
-		if (payload != null) {
-			var jsonString = getJson(payload);
-			setPayload(jsonString, con);
-		}
 		int responseCode = con.getResponseCode();
 		logger.log(Level.ALL, () -> "PUT Response Code :: " + responseCode);
 		return getResponse(con);

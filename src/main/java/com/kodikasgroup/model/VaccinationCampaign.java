@@ -21,7 +21,7 @@ public class VaccinationCampaign {
 	public VaccinationCampaign(String diseaseName, Set<Vaccine> vaccines) {
 		this.diseaseName = diseaseName;
 		this.vaccines = vaccines;
-	
+	}
 
 	@Override
 	public int hashCode() {

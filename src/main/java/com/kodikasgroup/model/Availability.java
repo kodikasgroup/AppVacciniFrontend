@@ -1,5 +1,4 @@
 package com.kodikasgroup.model;
-import com.kodikasgroup.id.IdAvailability;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -37,7 +36,6 @@ public class Availability {
         this.endDate = endDate;
         this.startHour = startHour;
         this.endHour = endHour;
-
     }
 
 }
