@@ -21,5 +21,17 @@ public class VaccinationCampaign {
 	public VaccinationCampaign(String diseaseName, Set<Vaccine> vaccines) {
 		this.diseaseName = diseaseName;
 		this.vaccines = vaccines;
+	
+
+	@Override
+	public int hashCode() {
+		int hash = 10;
+		hash = 32 * hash + (int)this.campaignID;
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return (obj instanceof VaccinationCampaign && ((VaccinationCampaign) obj).campaignID == this.campaignID);
 	}
 }

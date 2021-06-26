@@ -13,6 +13,9 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 public class RequestMaker {
 
 	private static final String URL = "http://localhost:8080/";
@@ -42,6 +45,14 @@ public class RequestMaker {
 		}
 	}
 
+	public static String sendGET(String endpoint, Object payload) throws IOException {
+		var jsonString = getJson(payload);
+		HttpURLConnection con = getConnection(endpoint+URLEncoder.encode(jsonString, "UTF-8"), "GET");
+		int responseCode = con.getResponseCode();
+		logger.log(Level.ALL, () -> "GET Response Code :: " + responseCode + "\n endpoint :"+endpoint);
+		return getResponse(con);
+	}
+
 	public static String sendPUT(String endpoint, Object payload) throws IOException {
 		HttpURLConnection con = getConnection(endpoint, "PUT");
 		if (payload != null) {
@@ -55,6 +66,10 @@ public class RequestMaker {
 
 	public static String sendPUT(String endpoint) throws IOException {
 		HttpURLConnection con = getConnection(endpoint, "PUT");
+		if (payload != null) {
+			var jsonString = getJson(payload);
+			setPayload(jsonString, con);
+		}
 		int responseCode = con.getResponseCode();
 		logger.log(Level.ALL, () -> "PUT Response Code :: " + responseCode);
 		return getResponse(con);
@@ -64,7 +79,7 @@ public class RequestMaker {
 		HttpURLConnection con = getConnection(endpoint, "POST");
 		var jsonString = getJson(payload);
 		setPayload(jsonString, con);
-        System.out.println(jsonString);
+		// System.out.println(jsonString);
 		int responseCode = con.getResponseCode();
 		logger.log(Level.ALL, () -> "POST Response Code :: " + responseCode);
 		return getResponse(con);
