@@ -50,8 +50,8 @@ public class LoginController {
 	private void goToUserPage(String text) {
 		try {
 			String response = sendGET(CITIZEN_ENDPOINT +"/"+text);
-			String respoonse1 = RequestMaker.sendGET(ENTITLED_ENDPOINT+"/categories");
-			Set<String> categories = objectMapper.readValue(respoonse1, new TypeReference<>() {});
+			String response1 = RequestMaker.sendGET(ENTITLED_ENDPOINT+"/categories");
+			Set<String> categories = objectMapper.readValue(response1, new TypeReference<>() {});
 			if (! response.equals("{}")) {
 				Citizen citizen = objectMapper.readValue(response, Citizen.class);
 				if (!categories.contains(citizen.getCategory())) {
