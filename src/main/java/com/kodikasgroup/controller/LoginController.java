@@ -3,6 +3,7 @@ package com.kodikasgroup.controller;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.kodikasgroup.App;
 import com.kodikasgroup.model.Citizen;
 import com.kodikasgroup.utils.RequestMaker;
 import javafx.fxml.FXML;
@@ -59,7 +60,7 @@ public class LoginController {
 				} else {
 					// check if user is registered
 					if (citizen.isRegistered()){
-						// TODO go To Main Page
+						App.setRoot("campaign");
 					} else {
 						setRoot("registration", 755, 400);
 					}
