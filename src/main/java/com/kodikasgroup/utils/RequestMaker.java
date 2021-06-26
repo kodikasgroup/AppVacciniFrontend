@@ -13,6 +13,9 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 public class RequestMaker {
 
     private static final String URL = "http://localhost:8080/";
@@ -40,6 +43,14 @@ public class RequestMaker {
             logger.log(Level.ALL, () -> "GET request not worked, endpoint: " + endpoint);
             return "{}";
         }
+    }
+
+    public static String sendGET(String endpoint, Object payload) throws IOException {
+        var jsonString = getJson(payload);
+        HttpURLConnection con = getConnection(endpoint+URLEncoder.encode(jsonString, "UTF-8"), "GET");
+        int responseCode = con.getResponseCode();
+            logger.log(Level.ALL, () -> "GET Response Code :: " + responseCode + "\n endpoint :"+endpoint);
+            return getResponse(con);
     }
 
     public static String sendPUT(String endpoint, Object payload) throws IOException {

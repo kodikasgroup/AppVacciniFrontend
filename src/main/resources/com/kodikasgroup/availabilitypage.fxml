@@ -3,32 +3,91 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.ViewAvailabilityController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1080.0" style="-fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.ViewAvailabilityController">
    <children>
-      <HBox layoutX="19.0" layoutY="50.0" prefHeight="518.0" prefWidth="763.0">
+      <Label layoutX="266.0" layoutY="40.0" prefHeight="68.0" prefWidth="449.0" text="Prenotazione vaccinazione">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Label>
+      <Label layoutX="266.0" layoutY="97.0" prefHeight="52.0" prefWidth="346.0" text="Aulss9">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Pane layoutX="266.0" layoutY="287.0" prefHeight="486.0" prefWidth="549.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 20;">
          <children>
-            <VBox prefHeight="542.0" prefWidth="434.0">
+            <StackPane layoutX="2.0" layoutY="3.0" prefHeight="486.0" prefWidth="543.0">
                <children>
-                  <Label prefHeight="53.0" prefWidth="370.0" text="Sedi Disponibili ">
-                     <font>
-                        <Font name="System Bold" size="36.0" />
-                     </font>
-                  </Label>
-                  <ListView fx:id="listviewclinic" prefHeight="506.0" prefWidth="434.0" style="-fx-font-size: 20;" />
-               </children>
-            </VBox>
-            <StackPane prefHeight="514.0" prefWidth="408.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#listViewBUttonPushed" prefHeight="55.0" prefWidth="146.0" text="Visualizza date -&gt;" />
+                  <VBox prefHeight="273.0" prefWidth="351.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="53.0" prefWidth="543.0" text="Selezionare una sede" textAlignment="CENTER">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ListView fx:id="listviewclinic" prefHeight="362.0" prefWidth="543.0" style="-fx-background-color: #f8f9fa; -fx-border-color: #f8f9fa; -fx-padding: 2; -fx-font-size: 12;" styleClass="-" />
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <StackPane prefHeight="91.0" prefWidth="279.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#backPage" prefHeight="34.0" prefWidth="164.0" style="-fx-background-color: #ffc107;" text="Torna a scelta servizio" textFill="#1e1e1e">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="91.0" prefWidth="265.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#listViewBUttonPushed" prefHeight="34.0" prefWidth="92.0" style="-fx-background-color: #0e5b92;" text="Conferma" textFill="#ebebeb">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
                </children>
             </StackPane>
          </children>
-      </HBox>
+      </Pane>
+      <ImageView fitHeight="126.0" fitWidth="158.0" layoutX="73.0" layoutY="34.0">
+         <image>
+            <Image url="@../../object/company_logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="531.0" layoutY="189.0" prefHeight="68.0" prefWidth="225.0" style="-fx-underline: true;" text="3. Sede                   " textFill="#0e5b92">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="298.0" layoutY="189.0" prefHeight="68.0" prefWidth="225.0" style="-fx-underline: true;" text="2. Servizio              " textFill="#a2acb5">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="73.0" layoutY="189.0" prefHeight="68.0" prefWidth="225.0" style="-fx-underline: true;" text="1. Iscrizione           " textFill="#a2acb5">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="770.0" layoutY="189.0" prefHeight="68.0" prefWidth="225.0" style="-fx-underline: true;" text="4.Giorno                " textFill="#a2acb5">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

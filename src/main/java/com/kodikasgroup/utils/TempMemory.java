@@ -35,4 +35,5 @@ public class TempMemory {
     public void setFromVaccinationCampaignController(boolean fromVaccinationCampaignController) {
         this.fromVaccinationCampaignController = fromVaccinationCampaignController;
     }
+
 }

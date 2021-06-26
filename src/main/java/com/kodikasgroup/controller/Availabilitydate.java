@@ -5,6 +5,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.kodikasgroup.model.Availability;
 import com.kodikasgroup.model.Reservation;
 import com.kodikasgroup.utils.RequestMaker;
+import com.kodikasgroup.utils.UserTempMemory;
 import com.kodikasgroup.wrapper.ReservationWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +21,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 import static com.kodikasgroup.App.newWindow;
+import static com.kodikasgroup.App.setRoot;
 
 public class Availabilitydate {
 
@@ -43,27 +45,14 @@ public class Availabilitydate {
     public int month = 0;
     ReservationWrapper allreservation;
 
+    UserTempMemory userTempMemory;
 
     @FXML
     public void initialize() throws IOException {
 
-
-        //TEST MODE
-         availability = new Availability(
-                "Santa",
-                2341344L,
-                LocalDate.of(2021, 05, 02),
-                LocalDate.of(2021, 06, 06),
-                LocalTime.of(13, 00),
-                LocalTime.of(15, 00)
-        );
-
-
-        ///
-
-
+        userTempMemory = UserTempMemory.getINSTANCE();
+        availability = userTempMemory.getAvailability();
         date = LocalDate.now();
-
         getListViewDate();
     }
 
@@ -88,9 +77,6 @@ public class Availabilitydate {
 
         //clean List
         dateview.getItems().clear();
-
-        ObservableList<String> data = FXCollections.observableArrayList();
-
 
         for (; day.isBefore(monthend.plusDays(1)); day = day.plusDays(1)) {
             dateview.getItems().addAll(day);
@@ -205,16 +191,24 @@ public class Availabilitydate {
 
     public  void onClickConfirme() throws IOException {
 
-        LocalDate selected = (LocalDate) dateview.getSelectionModel().getSelectedItem();
+        LocalDate localDate= (LocalDate) dateview.getSelectionModel().getSelectedItem();
         LocalTime localtime = (LocalTime) timetables.getSelectionModel().getSelectedItem();
 
-        if (hourmanaged(localtime) > 0){
-            newWindow("popup", 300, 200);
-        }
-        else {
-            //TODO: send PUL
-        }
+        if(localDate!= null || localtime != null) {
+            if (hourmanaged(localtime) > 0) {
+                newWindow("popup", 300, 200);
+            } else {
+                //TODO: send PUL
 
+                // TODO: subctract quantity to vaccine
+            }
+        }
+        else{
+            //TODO: ERROR MESSAGE nothing selected
+        }
+    }
 
+    public void onCLickBackPage() throws IOException {
+        setRoot("ViewAvailabilityController");
     }
 }
