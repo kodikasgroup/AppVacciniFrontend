@@ -1,22 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="140.0"
-			prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.InsertNewVaccineController">
-	<Text layoutX="51.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Vaccino"/>
-	<TextField fx:id="vaccineNameField" layoutX="51.0" layoutY="46.0"/>
-	<Text layoutX="324.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantità"/>
-	<TextField fx:id="vaccineQuantityField" layoutX="324.0" layoutY="45.0"/>
-	<ButtonBar layoutX="180.0" layoutY="85.0" prefHeight="40.0" prefWidth="200.0">
-		<buttons>
-			<Button cancelButton="true" mnemonicParsing="false" text="Annulla" onAction="#cancel"/>
-			<Button defaultButton="true" mnemonicParsing="false" text="Conferma" onAction="#confirm"/>
-		</buttons>
-	</ButtonBar>
-</AnchorPane>
+<Pane prefHeight="486.0" prefWidth="549.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.InsertNewVaccineController">
+   <children>
+      <StackPane layoutX="2.0" layoutY="3.0" prefHeight="486.0" prefWidth="543.0">
+         <children>
+            <VBox prefHeight="273.0" prefWidth="351.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="53.0" prefWidth="543.0" text="Inserisci i Dati del Vaccino" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <VBox prefHeight="89.0" prefWidth="543.0">
+                     <children>
+                        <Text fill="#0e5b92" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Vaccino">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="50.0" />
+                           </VBox.margin>
+                        </Text>
+                        <TextField fx:id="vaccineNameField" alignment="TOP_LEFT" prefHeight="24.0" prefWidth="486.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 5;">
+                           <VBox.margin>
+                              <Insets left="50.0" right="50.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="89.0" prefWidth="543.0">
+                     <children>
+                        <Text fill="#0e5b92" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantità">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="50.0" />
+                           </VBox.margin>
+                        </Text>
+                        <TextField fx:id="vaccineQuantityField" alignment="TOP_LEFT" prefHeight="24.0" prefWidth="486.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 5;">
+                           <VBox.margin>
+                              <Insets left="50.0" right="50.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <StackPane prefHeight="91.0" prefWidth="279.0">
+                           <children>
+                              <Button fx:id="annullaButton" alignment="CENTER" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #c23b22;" text="Annulla" textFill="#ebebeb" />
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="91.0" prefWidth="265.0">
+                           <children>
+                              <Button fx:id="confirmButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#confirm" style="-fx-background-color: #0e5b92;" text="Conferma" textFill="#ebebeb" />
+                           </children>
+                        </StackPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </children>
+</Pane>
