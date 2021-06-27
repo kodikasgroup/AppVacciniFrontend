@@ -49,6 +49,7 @@ public class App extends Application {
 		Stage stage = new Stage();
 		stage.setTitle(fxml);
 		stage.setScene(new Scene(loadFXML(fxml), width, height));
+		stage.getScene().setFill(Color.TRANSPARENT);
 		stage.initStyle(StageStyle.TRANSPARENT);
 		stage.show();
 	}
