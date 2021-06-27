@@ -6,9 +6,9 @@ import com.kodikasgroup.model.Availability;
 import com.kodikasgroup.model.Reservation;
 import com.kodikasgroup.utils.RequestMaker;
 import com.kodikasgroup.utils.UserTempMemory;
+import com.kodikasgroup.wrapper.AvailabilityWrapper;
 import com.kodikasgroup.wrapper.ReservationWrapper;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.kodikasgroup.wrapper.VaccineIdWrapper;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -18,6 +18,7 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.kodikasgroup.App.newWindow;
@@ -25,7 +26,7 @@ import static com.kodikasgroup.App.setRoot;
 
 public class ViewAvailabilitydateController {
 
-    private static final String AVAILABILITY_ENDPOINT = "/reservations";
+    private static final String RESERVATIONS_ENDPOINT = "reservations";
     private static final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
     @FXML
     ListView dateview;
@@ -51,13 +52,25 @@ public class ViewAvailabilitydateController {
     public void initialize() throws IOException {
 
         userTempMemory = UserTempMemory.getINSTANCE();
-        availability = userTempMemory.getAvailability();
+
+        //todo: Test Mode isolatio page
+        List<Long> testids = List.of(1L,2L);
+        VaccineIdWrapper ids = new VaccineIdWrapper(testids);
+        String data = RequestMaker.sendGET("availability" + "/idvaccine" + "?ids=" , ids);
+        AvailabilityWrapper result = objectMapper.readValue(data, AvailabilityWrapper.class);
+        availability = new ArrayList<>();
+        for (Availability obj :  result.getAvailability()){
+            availability.add(obj);
+        }
+
+        //todo: UNCOMMENT and delete test mode
+        //availability = userTempMemory.getAvailability();
         date = LocalDate.now();
         getListViewDate();
     }
 
     private ReservationWrapper getReservationsDay(LocalDate day) throws IOException {
-        String recive =  RequestMaker.sendGET(AVAILABILITY_ENDPOINT+"/date/"+day);
+        String recive =  RequestMaker.sendGET(RESERVATIONS_ENDPOINT +"/date/"+day);
 
         ReservationWrapper result = objectMapper.readValue(recive,ReservationWrapper.class);
 
@@ -140,14 +153,22 @@ public class ViewAvailabilitydateController {
 
     private boolean checkAvailbilityDay(LocalDate choice) {
 
-        return choice.isBefore(availability.getEndDate().plusDays(1)) && choice.isAfter(availability.getStartDate().minusDays(1));
+        for(Availability obj : availability){
+            if(choice.isBefore(obj.getEndDate().plusDays(1)) && choice.isAfter(obj.getStartDate().minusDays(1)))
+                return true;
+        }
+        return false;
+
+        //return choice.isBefore(availability.getEndDate().plusDays(1)) && choice.isAfter(availability.getStartDate().minusDays(1));
     }
 
     private void printtimetables(LocalDate day) throws IOException {
 
         allreservation = getReservationsDay(day);
-        for (LocalTime time = availability.getStartHour(); time.isBefore(availability.getEndHour().plusHours(1)); time =time.plusHours(1)) {
-            timetables.getItems().addAll(time);
+        for(Availability obj : availability) {
+            for (LocalTime time = obj.getStartHour(); time.isBefore(obj.getEndHour().plusHours(1)); time = time.plusHours(1)) {
+                timetables.getItems().addAll(time);
+            }
         }
 
         timetables.setCellFactory(new Callback<ListView<LocalTime>, ListCell<LocalTime>>() {
@@ -182,9 +203,11 @@ public class ViewAvailabilitydateController {
     private byte hourmanaged (LocalTime time) {
         // 0 = green , 1 == red
         int numberofreservation = 0;
-        for (Reservation entry : allreservation.getReservations()){
-            if(time.equals(entry.getTime())){
-                numberofreservation += 1;
+        if (!(allreservation.getReservations().isEmpty())) {
+            for (Reservation entry : allreservation.getReservations()) {
+                if (time.equals(entry.getTime())) {
+                    numberofreservation += 1;
+                }
             }
         }
         //Number of max prenotations hour
