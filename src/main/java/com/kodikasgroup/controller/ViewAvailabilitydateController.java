@@ -59,18 +59,19 @@ public class ViewAvailabilitydateController {
 
         userTempMemory = UserTempMemory.getINSTANCE();
 
-        //todo: Test Mode isolatio page
-        List<Long> testids = List.of(1L, 2L);
-        VaccineIdWrapper ids = new VaccineIdWrapper(testids);
-        String data = RequestMaker.sendGET("availability" + "/idvaccine" + "?ids=", ids);
-        AvailabilityWrapper result = objectMapper.readValue(data, AvailabilityWrapper.class);
-        availability = new ArrayList<>();
-        for (Availability obj : result.getAvailability()) {
-            availability.add(obj);
-        }
+//        //todo: Test Mode isolatio page
+//        List<Long> testids = List.of(1L, 2L);
+//        VaccineIdWrapper ids = new VaccineIdWrapper(testids);
+//        String data = RequestMaker.sendGET("availability" + "/idvaccine" + "?ids=", ids);
+//        AvailabilityWrapper result = objectMapper.readValue(data, AvailabilityWrapper.class);
+//        availability = new ArrayList<>();
+//        for (Availability obj : result.getAvailability()) {
+//            availability.add(obj);
+//        }
+//        userTempMemory.setFiscalcode("BRTCRL30A29E684P");
 
         //todo: UNCOMMENT and delete test mode
-        //availability = userTempMemory.getAvailability();
+        availability = userTempMemory.getAvailability();
         clinicName = (availability.get(0)).getAvailabilityId().getClinicName();
         date = LocalDate.now();
         getListViewDate();
@@ -252,7 +253,10 @@ public class ViewAvailabilitydateController {
                     newWindow("popup", 300, 200);
                 }
                 else{
-                    newWindow("DONE");
+                    userTempMemory.setClinicname(clinicName);
+                    userTempMemory.setLocalDate(localDate);
+                    userTempMemory.setLocalTime(localtime);
+                    newWindow("done", 900 ,650);
                 }
             }
 

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-border-color: #0e5b92; -fx-border-width: 1; -fx-border-radius: 20; -fx-background-radius: 30; -fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.doneController">
+   <children>
+      <ImageView fitHeight="143.0" fitWidth="191.0" layoutX="14.0" layoutY="14.0">
+         <image>
+            <Image url="@../../object/company_logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="213.0" layoutY="31.0" prefHeight="68.0" prefWidth="449.0" text="Prenotazione vaccinazione">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelcampaign" layoutX="662.0" layoutY="31.0" prefHeight="68.0" prefWidth="236.0">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Label>
+      <Label layoutX="387.0" layoutY="86.0" prefHeight="52.0" prefWidth="108.0" text="Aulss9">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Label fx:id="cflabel" alignment="CENTER" layoutX="187.0" layoutY="408.0" prefHeight="45.0" prefWidth="527.0" textAlignment="CENTER" textFill="#000000e7" wrapText="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="datelabel" alignment="CENTER" layoutX="187.0" layoutY="453.0" prefHeight="45.0" prefWidth="527.0" textAlignment="CENTER" textFill="#000000cd" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="58.0" layoutY="574.0" mnemonicParsing="false" onAction="#onCLickBackLogin" prefHeight="34.0" prefWidth="217.0" style="-fx-background-color: #ffc107;" text="Torna all Pagina iniziale " textFill="#1e1e1e">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="confirmButton" layoutX="596.0" layoutY="568.0" mnemonicParsing="false" onAction="#onClickConfirme" prefHeight="34.0" prefWidth="217.0" style="-fx-background-color: #0e5b92;" text="Conferma e chiudi" textFill="#ebebeb">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutX="26.0" layoutY="174.0" prefHeight="68.0" prefWidth="839.0" text="Prenotazione Confermata presso:" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelPlace" alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="257.0" prefHeight="68.0" prefWidth="839.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

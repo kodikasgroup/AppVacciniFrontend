@@ -6,6 +6,8 @@ import com.kodikasgroup.model.Vaccine;
 import com.kodikasgroup.wrapper.AvailabilityWrapper;
 import com.kodikasgroup.wrapper.VaccineIdWrapper;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,33 @@ public class UserTempMemory {
     private VaccinationCampaign campaign;
     private List<Vaccine> vaccines = new ArrayList<>();
     private List<Availability> availability = new ArrayList<>();
+    private String clinicname ;
+    private LocalDate localDate;
+    private LocalTime localTime;
+
+    public String getClinicname() {
+        return clinicname;
+    }
+
+    public void setClinicname(String clinicname) {
+        this.clinicname = clinicname;
+    }
+
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
+    }
+
+    public LocalTime getLocalTime() {
+        return localTime;
+    }
+
+    public void setLocalTime(LocalTime localTime) {
+        this.localTime = localTime;
+    }
 
     private static final UserTempMemory INSTANCE = new UserTempMemory();
 
