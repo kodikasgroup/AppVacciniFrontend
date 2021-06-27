@@ -7,8 +7,11 @@ import com.kodikasgroup.model.Vaccine;
 import com.kodikasgroup.model.VaccineWrapper;
 import com.kodikasgroup.utils.RequestMaker;
 import com.kodikasgroup.utils.Utils;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.IOException;
 import java.time.LocalTime;
@@ -81,11 +84,19 @@ public class AddAvailabilityController {
 	}
 
 	private void goBack() throws IOException {
-		setRoot("adminMainPage", 600, 400);
+		//setRoot("adminMainPage", 600, 400)
+
+		// get a handle to the stage
+		Stage stage = (Stage) confirmButton.getScene().getWindow();
+		// do what you have to do
+		stage.close();
 	}
 
 	public void cancel() throws IOException {
-		goBack();
+		// get a handle to the stage
+		Stage stage = (Stage) confirmButton.getScene().getWindow();
+		// do what you have to do
+		stage.close();
 	}
 
 	public Availability getData() {

@@ -23,7 +23,7 @@ import java.util.List;
 import static com.kodikasgroup.App.newWindow;
 import static com.kodikasgroup.App.setRoot;
 
-public class Availabilitydate {
+public class AvailabilitydateController {
 
     private static final String AVAILABILITY_ENDPOINT = "/reservations";
     private static final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
@@ -209,6 +209,6 @@ public class Availabilitydate {
     }
 
     public void onCLickBackPage() throws IOException {
-        setRoot("ViewAvailabilityController");
+        setRoot("availabilitypage");
     }
 }
