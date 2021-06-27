@@ -42,7 +42,7 @@
                               <HBox prefHeight="54.0" prefWidth="543.0">
                                  <children>
                                     <StackPane prefHeight="100.0" prefWidth="98.0" />
-                                    <TextField fx:id="inputField" prefHeight="46.0" prefWidth="359.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 10;">
+                                    <TextField fx:id="inputField" prefHeight="46.0" prefWidth="359.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 10; -fx-background-radius: 10;">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
