@@ -6,6 +6,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.kodikasgroup.App;
 import com.kodikasgroup.model.Citizen;
 import com.kodikasgroup.utils.RequestMaker;
+import com.kodikasgroup.utils.UserTempMemory;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -27,6 +28,8 @@ public class LoginController {
 	@FXML private TextField inputField;
 	@FXML private Text errorMessage;
 
+	UserTempMemory userTempMemory;
+
 	public LoginController() {
 		objectMapper.registerModule(new JavaTimeModule());
 	}
@@ -35,10 +38,16 @@ public class LoginController {
 		String text = inputField.getText();
 		if (text.equals("admin")) {
 			hideErrorMessage();
-			setRoot("adminMainPage", 600, 400);
+			setRoot("adminMainPage");
 		} else if (text.equals("no vax")){
 			// TODO EASTEREGG
-		} else {
+		} else if (text.equals("testmode")){
+			//Over 80
+			userTempMemory = UserTempMemory.getINSTANCE();
+			userTempMemory.setFiscalcode("BRTCRL30A29E684P");
+			App.setRoot("campaign");
+		}
+		else {
 			if (isValidFiscalCode(text)) {
 				hideErrorMessage();
 				goToUserPage(text);
@@ -60,6 +69,8 @@ public class LoginController {
 				} else {
 					// check if user is registered
 					if (citizen.isRegistered()){
+						userTempMemory = UserTempMemory.getINSTANCE();
+						userTempMemory.setFiscalcode(text);
 						App.setRoot("campaign");
 					} else {
 						setRoot("registration", 755, 400);

@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -59,11 +60,20 @@ public class AssignCategoryVaccineController {
 	}
 
 	private void goBack() throws IOException {
-		setRoot("adminMainPage", 600, 400);
+		//setRoot("adminMainPage", 600, 400);
+
+		// get a handle to the stage
+		Stage stage = (Stage) confirmButton.getScene().getWindow();
+		// do what you have to do
+		stage.close();
 	}
 
 	public void cancel(ActionEvent actionEvent) throws IOException {
-		goBack();
+		//goBack();
+		// get a handle to the stage
+		Stage stage = (Stage) confirmButton.getScene().getWindow();
+		// do what you have to do
+		stage.close();
 	}
 
 	public void confirm(ActionEvent actionEvent) throws IOException {

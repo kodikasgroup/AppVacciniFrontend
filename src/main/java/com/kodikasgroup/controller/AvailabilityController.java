@@ -23,7 +23,7 @@ import static com.kodikasgroup.App.newWindow;
 import static com.kodikasgroup.App.setRoot;
 
 
-public class AddAvailabilityController {
+public class AvailabilityController {
 	@FXML private MenuButton vaccineMenuButton;
 	@FXML private TextField startHourField;
 	@FXML private TextField endHourField;

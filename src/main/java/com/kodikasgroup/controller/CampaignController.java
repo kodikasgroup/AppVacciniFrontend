@@ -44,32 +44,35 @@ public class CampaignController {
     private void viewall() throws IOException {
 
         getallCampaign();
-        for(VaccinationCampaign entry : availabelecampain){
-            viewcampaign.getItems().addAll(entry.getDiseaseName());
-        }
+        if(!(availabelecampain.isEmpty())) {
+            for (VaccinationCampaign entry : availabelecampain) {
+                viewcampaign.getItems().addAll(entry.getDiseaseName());
+            }
+            viewcampaign.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+                @Override
+                public ListCell<String> call(ListView<String> param) {
+                    return new ListCell<String>() {
+                        @Override
+                        protected void updateItem(String item, boolean empty) {
+                            super.updateItem(item, empty);
+                            if (item == null || empty) {
+                                setText(null);
+                                setStyle("-fx-control-inner-background: " + DEFAULT_CONTROL_INNER_BACKGROUND + ";");
+                            } else {
+                                setText(item.toString());
+                                setStyle("-fx-font-weight: bold;" + "-fx-alignment: center ;" + "-fx-font-size: 18 ;" + "-fx-control-inner-background: " + ACTIVE_CONTROL_INNER_BACKGROUND + ";");
 
-        viewcampaign.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
-            @Override
-            public ListCell<String> call(ListView<String> param) {
-                return new ListCell<String>() {
-                    @Override
-                    protected void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (item == null || empty) {
-                            setText(null);
-                            setStyle("-fx-control-inner-background: " + DEFAULT_CONTROL_INNER_BACKGROUND + ";");
-                        } else {
-                            setText(item.toString());
-                            setStyle("-fx-font-weight: bold;" + "-fx-alignment: center ;" + "-fx-font-size: 18 ;"+ "-fx-control-inner-background: "+ ACTIVE_CONTROL_INNER_BACKGROUND + ";");
+                            }
 
                         }
-
-                    }
-                };
-            }
-        });
-
-        //TODO: selezionare colori tabella
+                    };
+                }
+            });
+        }
+        else
+        {
+            viewcampaign.getItems().addAll("Al momento non risultano campagne attive");
+        }
     }
 
 
@@ -103,7 +106,7 @@ public class CampaignController {
         //TODO: check confirm not null save idcampaign in temp memory
         String choice = (String)viewcampaign.getSelectionModel().getSelectedItem();
 
-        if(choice == null || choice.equals("Al momento non risultano sedi disponibili")){
+        if(choice == null || choice.equals("Al momento non risultano campagne attive")){
             //TODO: EROR POPUP
         }
         else {
@@ -116,7 +119,6 @@ public class CampaignController {
     }
 
     public void onClickBack() throws IOException {
-        //TODO: go back to main page
         setRoot("login");
     }
 

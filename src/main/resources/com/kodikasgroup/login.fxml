@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1080.0" style="-fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.LoginController">
     <children>
@@ -38,7 +39,7 @@
                         <VBox prefHeight="355.0" prefWidth="543.0">
                            <children>
                               <StackPane prefHeight="78.0" prefWidth="543.0" />
-                              <HBox prefHeight="100.0" prefWidth="200.0">
+                              <HBox prefHeight="54.0" prefWidth="543.0">
                                  <children>
                                     <StackPane prefHeight="100.0" prefWidth="98.0" />
                                     <TextField fx:id="inputField" prefHeight="46.0" prefWidth="359.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 10;">
@@ -46,6 +47,12 @@
                                           <Font size="14.0" />
                                        </font>
                                     </TextField>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="98.0" prefWidth="543.0">
+                                 <children>
+                                    <StackPane prefHeight="85.0" prefWidth="100.0" />
+                                    <Text fx:id="errorMessage" fill="#e10000" strokeType="OUTSIDE" strokeWidth="0.0" text="ERRORE: Inserire un CodiceFiscale Valido" visible="false" wrappingWidth="294.7255859375" />
                                  </children>
                               </HBox>
                               <StackPane prefHeight="130.0" prefWidth="543.0" />

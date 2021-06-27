@@ -1,12 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.AdminMainPageController">
-<!--	<Button layoutX="215.0" layoutY="268.0" mnemonicParsing="false" onAction="#goToAddVaccine" prefHeight="44.0" prefWidth="174.0" text="Inserisci Vaccino" />-->
-	<Button layoutX="180.0" layoutY="149.0" mnemonicParsing="false" onAction="#goToAddAvailabilityPage" prefHeight="44.0" prefWidth="244.0" text="Aggiungi Disponibilità" />
-	<Button layoutX="180.0" layoutY="208.0" mnemonicParsing="false" onAction="#goToAssignVaccineCategory" prefHeight="44.0" prefWidth="244.0" text="Associa Vaccino a Categoria" />
-	<Button layoutX="179.0" layoutY="86.0" mnemonicParsing="false" onAction="#goToAddVaccinationCampaign" prefHeight="44.0" prefWidth="244.0" text="Aggiungi Campagna Vaccinale" />
-	<Button layoutX="180.0" layoutY="31.0" mnemonicParsing="false" onAction="#goToModifyVaccineAvailability" prefHeight="44.0" prefWidth="244.0" text="Modifica Scorte Vaccino" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1080.0" style="-fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.AdminMainPageController">
+    <children>
+        <Label layoutX="266.0" layoutY="40.0" prefHeight="68.0" prefWidth="449.0" text="Prenotazione vaccinazione">
+            <font>
+                <Font name="System Bold" size="35.0" />
+            </font>
+        </Label>
+        <Label layoutX="266.0" layoutY="97.0" prefHeight="52.0" prefWidth="346.0" text="Aulss9">
+            <font>
+                <Font size="35.0" />
+            </font>
+        </Label>
+        <Pane layoutX="266.0" layoutY="287.0" prefHeight="486.0" prefWidth="549.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 20;">
+            <children>
+                <StackPane layoutX="2.0" layoutY="3.0" prefHeight="486.0" prefWidth="543.0">
+                    <children>
+                        <VBox prefHeight="273.0" prefWidth="351.0">
+                            <children>
+                                <Label alignment="CENTER" prefHeight="53.0" prefWidth="543.0" text="STRUMENTI" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                        <HBox prefHeight="324.0" prefWidth="543.0">
+                           <children>
+                              <StackPane prefHeight="336.0" prefWidth="317.0" />
+                              <VBox prefHeight="178.0" prefWidth="543.0" style="-fx-spacing: 40;">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#goToAddAvailabilityPage" prefHeight="44.0" prefWidth="244.0" style="-fx-background-color: #0e5b92;" text="Aggiungi Disponibilità" textFill="#ebebeb">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button mnemonicParsing="false" onAction="#goToAssignVaccineCategory" prefHeight="44.0" prefWidth="244.0" style="-fx-background-color: #0e5b92;" text="Associa Vaccino a Categoria" textFill="#ebebeb">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button mnemonicParsing="false" onAction="#goToAddVaccinationCampaign" prefHeight="44.0" prefWidth="244.0" style="-fx-background-color: #0e5b92;" text="Aggiungi Campagna Vaccinale" textFill="#ebebeb">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button mnemonicParsing="false" onAction="#goToModifyVaccineAvailability" prefHeight="46.0" prefWidth="244.0" style="-fx-background-color: #0e5b92;" text="Modifica Scorte Vaccino" textFill="#ebebeb">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                                <HBox prefHeight="87.0" prefWidth="543.0">
+                                    <children>
+                                        <StackPane prefHeight="99.0" prefWidth="142.0" />
+                                        <StackPane prefHeight="96.0" prefWidth="279.0">
+                                            <children>
+                                                <Button mnemonicParsing="false" onAction="#goBack" prefHeight="34.0" prefWidth="220.0" style="-fx-background-color: #ffc107;" text="Torna alla schermata principale" textFill="#1e1e1e">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </Button>
+                                            </children>
+                                        </StackPane>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </StackPane>
+            </children>
+        </Pane>
+        <ImageView fitHeight="126.0" fitWidth="158.0" layoutX="73.0" layoutY="34.0">
+            <image>
+                <Image url="@../../object/company_logo.png" />
+            </image>
+        </ImageView>
+        <Label layoutX="413.0" layoutY="190.0" prefHeight="68.0" prefWidth="262.0" style="-fx-underline: true;" text="    AREA  RISERVATA    " textFill="#0e5b92">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+    </children>
 </AnchorPane>

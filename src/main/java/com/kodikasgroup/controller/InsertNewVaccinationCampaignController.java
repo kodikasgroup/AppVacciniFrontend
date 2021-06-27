@@ -6,10 +6,12 @@ import com.kodikasgroup.utils.RequestMaker;
 import com.kodikasgroup.utils.TempMemory;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -55,7 +57,7 @@ public class InsertNewVaccinationCampaignController {
 	private void goBack() throws IOException {
 		issueName = "";
 		tempMemory.setFromVaccinationCampaignController(false);
-		setRoot("adminMainPage", 600, 400);
+		setRoot("adminMainPage");
 	}
 
 	public void cancel() throws IOException {

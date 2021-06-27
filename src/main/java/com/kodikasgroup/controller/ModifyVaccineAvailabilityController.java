@@ -77,7 +77,7 @@ public class ModifyVaccineAvailabilityController {
 	}
 
 	public void goBack() throws IOException {
-		App.setRoot("adminMainPage", 600, 450);
+		App.setRoot("adminMainPage");
 	}
 
 	public void cancel() throws IOException {

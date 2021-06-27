@@ -1,12 +1,6 @@
 package com.kodikasgroup.controller;
 
-import java.io.File;
 import java.io.IOException;
-import java.sql.Wrapper;
-import java.time.LocalDate;
-import java.time.temporal.Temporal;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 import static com.kodikasgroup.App.newWindow;
@@ -15,18 +9,13 @@ import static com.kodikasgroup.App.setRoot;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.kodikasgroup.model.Availability;
-import com.kodikasgroup.model.VaccinationCampaign;
 import com.kodikasgroup.model.Vaccine;
 import com.kodikasgroup.utils.RequestMaker;
-import com.kodikasgroup.utils.TempMemory;
 import com.kodikasgroup.utils.UserTempMemory;
 import com.kodikasgroup.wrapper.AvailabilityWrapper;
-import com.kodikasgroup.wrapper.VaccineIdWrapper;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.stage.Window;
 import javafx.util.Callback;
 
 public class ViewAvailabilityController {
@@ -36,7 +25,7 @@ public class ViewAvailabilityController {
     @FXML
     private ListView listviewclinic;
 
-    private AvailabilityWrapper response;
+    private AvailabilityWrapper availabilityWrapper;
 
     String DEFAULT_CONTROL_INNER_BACKGROUND = "derive(-fx-base,80%)";
     String ACTIVE_CONTROL_INNER_BACKGROUND = " #0e5b92";
@@ -53,10 +42,10 @@ public class ViewAvailabilityController {
         userTempMemory = UserTempMemory.getINSTANCE();
 
         //Save only
-        response = getAllIdvaccines();
+        availabilityWrapper = getAllIdvaccines();
 
-        if(response.getAvailability() != null) {
-            for (Availability entity : response.getAvailability()) {
+        if(availabilityWrapper.getAvailability() != null) {
+            for (Availability entity : availabilityWrapper.getAvailability()) {
                 listviewclinic.getItems().addAll(entity.getAvailabilityId().getClinicName());
             }
             listviewclinic.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
@@ -105,14 +94,12 @@ public class ViewAvailabilityController {
     }
 
     private void nextPage(String select) throws IOException {
-        Availability selection = null;
-        for (Availability entity : response.getAvailability()) {
-
+        userTempMemory.resetAvailability();
+        for (Availability entity : availabilityWrapper.getAvailability()) {
             if (entity.getAvailabilityId().getClinicName() == select) {
-                selection = entity;
+                userTempMemory.addAvailability(entity);
             }
         }
-        userTempMemory.setAvailability(selection);
         setRoot("availabilitydate");
     }
 

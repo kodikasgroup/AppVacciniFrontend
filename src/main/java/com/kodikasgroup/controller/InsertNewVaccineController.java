@@ -6,6 +6,7 @@ import com.kodikasgroup.utils.RequestMaker;
 import com.kodikasgroup.utils.TempMemory;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -40,7 +41,7 @@ public class InsertNewVaccineController {
 		if (tempMemory.isFromVaccinationCampaignController()) {
 			setRoot("insertNewVaccinationCampaign", 720, 450);
 		} else {
-			setRoot("adminMainPage", 600, 400);
+			setRoot("adminMainPage");
 		}
 	}
 

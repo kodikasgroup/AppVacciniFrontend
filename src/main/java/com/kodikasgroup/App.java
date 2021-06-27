@@ -43,9 +43,9 @@ public class App extends Application {
 		stage.show();
 	}
 
-	public static void newWindow(String fxml, int width, int height) throws IOException {
+	public static void newWindow(String fxml,int width, int height) throws IOException {
 		Stage stage = new Stage();
-		stage.setTitle("Error");
+		stage.setTitle(fxml);
 		stage.setScene(new Scene(loadFXML(fxml), width, height));
 		stage.show();
 	}

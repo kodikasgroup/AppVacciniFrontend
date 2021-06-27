@@ -23,7 +23,7 @@ import java.util.List;
 import static com.kodikasgroup.App.newWindow;
 import static com.kodikasgroup.App.setRoot;
 
-public class AvailabilitydateController {
+public class ViewAvailabilitydateController {
 
     private static final String AVAILABILITY_ENDPOINT = "/reservations";
     private static final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
@@ -39,7 +39,7 @@ public class AvailabilitydateController {
     String GREEN_CONTROL_INNER_BACKGROUND = "derive(palegreen, 50%)";
     String RED_CONTROL_INNER_BACKGROUND = "derive(red, 50%)";
 
-    private Availability availability;
+    private List<Availability> availability;
 
     private LocalDate date;
     public int month = 0;
@@ -108,7 +108,11 @@ public class AvailabilitydateController {
     }
 
     private boolean daymanaged (LocalDate date){
-        return date.isAfter(availability.getStartDate().minusDays(1))&& date.isBefore(availability.getEndDate().plusDays(1));
+        for(Availability obj : availability){
+            if(date.isAfter(obj.getStartDate().minusDays(1))&& date.isBefore(obj.getEndDate().plusDays(1)))
+               return true;
+        }
+        return false;
     }
 
     public void backroclick() {
