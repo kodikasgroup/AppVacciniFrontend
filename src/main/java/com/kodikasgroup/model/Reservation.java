@@ -13,9 +13,8 @@ import java.time.LocalTime;
 @Setter
 @EqualsAndHashCode
 public class Reservation {
-    private String fiscalCode;
+    IdReservation reservationId;
     private String clinicName;
-    private Long idVaccine;
     private LocalDate  date;
     private LocalTime  time;
 }

@@ -3,6 +3,8 @@ package com.kodikasgroup.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.kodikasgroup.model.Availability;
+import com.kodikasgroup.model.Citizen;
+import com.kodikasgroup.model.IdReservation;
 import com.kodikasgroup.model.Reservation;
 import com.kodikasgroup.utils.RequestMaker;
 import com.kodikasgroup.utils.UserTempMemory;
@@ -16,6 +18,8 @@ import javafx.scene.control.TextArea;
 import javafx.util.Callback;
 
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -26,8 +30,9 @@ import static com.kodikasgroup.App.setRoot;
 
 public class ViewAvailabilitydateController {
 
-    private static final String RESERVATIONS_ENDPOINT = "reservations";
+    private static final String RESERVATIONS_ENDPOINT = "/reservations";
     private static final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
+    private static final int MAX_NUMBER_RESERVATION = 1;
     @FXML
     ListView dateview;
     @FXML
@@ -45,6 +50,7 @@ public class ViewAvailabilitydateController {
     private LocalDate date;
     public int month = 0;
     ReservationWrapper allreservation;
+    String clinicName;
 
     UserTempMemory userTempMemory;
 
@@ -54,27 +60,38 @@ public class ViewAvailabilitydateController {
         userTempMemory = UserTempMemory.getINSTANCE();
 
         //todo: Test Mode isolatio page
-        List<Long> testids = List.of(1L,2L);
+        List<Long> testids = List.of(1L, 2L);
         VaccineIdWrapper ids = new VaccineIdWrapper(testids);
-        String data = RequestMaker.sendGET("availability" + "/idvaccine" + "?ids=" , ids);
+        String data = RequestMaker.sendGET("availability" + "/idvaccine" + "?ids=", ids);
         AvailabilityWrapper result = objectMapper.readValue(data, AvailabilityWrapper.class);
         availability = new ArrayList<>();
-        for (Availability obj :  result.getAvailability()){
+        for (Availability obj : result.getAvailability()) {
             availability.add(obj);
         }
 
         //todo: UNCOMMENT and delete test mode
         //availability = userTempMemory.getAvailability();
+        clinicName = (availability.get(0)).getAvailabilityId().getClinicName();
         date = LocalDate.now();
         getListViewDate();
     }
 
     private ReservationWrapper getReservationsDay(LocalDate day) throws IOException {
-        String recive =  RequestMaker.sendGET(RESERVATIONS_ENDPOINT +"/date/"+day);
 
-        ReservationWrapper result = objectMapper.readValue(recive,ReservationWrapper.class);
+        List<Reservation> allreservation = new ArrayList<>();
+        ReservationWrapper temp;
+        String recive;
+        for (Availability obj : availability) {
+            recive = RequestMaker.sendGET(RESERVATIONS_ENDPOINT + "/clinicName/" + URLEncoder.encode(obj.getAvailabilityId().getClinicName(), "UTF-8") +
+                    "/idVaccine/" + obj.getAvailabilityId().getIdVaccine().toString() + "/date/" + day);
+            temp = objectMapper.readValue(recive, ReservationWrapper.class);
+            if (temp != null && temp.getReservations() != null) {
+                for (Reservation entry : temp.getReservations())
+                    allreservation.add(entry);
+            }
+        }
 
-        return result;
+        return new ReservationWrapper(allreservation);
     }
 
     private void getListViewDate() {
@@ -120,10 +137,10 @@ public class ViewAvailabilitydateController {
         });
     }
 
-    private boolean daymanaged (LocalDate date){
-        for(Availability obj : availability){
-            if(date.isAfter(obj.getStartDate().minusDays(1))&& date.isBefore(obj.getEndDate().plusDays(1)))
-               return true;
+    private boolean daymanaged(LocalDate date) {
+        for (Availability obj : availability) {
+            if (date.isAfter(obj.getStartDate().minusDays(1)) && date.isBefore(obj.getEndDate().plusDays(1)))
+                return true;
         }
         return false;
     }
@@ -153,8 +170,8 @@ public class ViewAvailabilitydateController {
 
     private boolean checkAvailbilityDay(LocalDate choice) {
 
-        for(Availability obj : availability){
-            if(choice.isBefore(obj.getEndDate().plusDays(1)) && choice.isAfter(obj.getStartDate().minusDays(1)))
+        for (Availability obj : availability) {
+            if (choice.isBefore(obj.getEndDate().plusDays(1)) && choice.isAfter(obj.getStartDate().minusDays(1)))
                 return true;
         }
         return false;
@@ -165,7 +182,7 @@ public class ViewAvailabilitydateController {
     private void printtimetables(LocalDate day) throws IOException {
 
         allreservation = getReservationsDay(day);
-        for(Availability obj : availability) {
+        for (Availability obj : availability) {
             for (LocalTime time = obj.getStartHour(); time.isBefore(obj.getEndHour().plusHours(1)); time = time.plusHours(1)) {
                 timetables.getItems().addAll(time);
             }
@@ -184,12 +201,11 @@ public class ViewAvailabilitydateController {
                         } else {
                             setText(item.toString());
                             int check = hourmanaged(item);
-                            if (check== 0) {
+                            if (check == 0) {
                                 setStyle("-fx-control-inner-background: " + GREEN_CONTROL_INNER_BACKGROUND + ";");
-                            } else if(check == 1 ){
+                            } else if (check == 1) {
                                 setStyle("-fx-control-inner-background: " + RED_CONTROL_INNER_BACKGROUND + ";");
-                            }
-                            else {
+                            } else {
                                 setStyle("-fx-control-inner-background: " + DEFAULT_CONTROL_INNER_BACKGROUND + ";");
                             }
                         }
@@ -200,10 +216,10 @@ public class ViewAvailabilitydateController {
         });
     }
 
-    private byte hourmanaged (LocalTime time) {
+    private byte hourmanaged(LocalTime time) {
         // 0 = green , 1 == red
         int numberofreservation = 0;
-        if (!(allreservation.getReservations().isEmpty())) {
+        if (allreservation != null && allreservation.getReservations() != null) {
             for (Reservation entry : allreservation.getReservations()) {
                 if (time.equals(entry.getTime())) {
                     numberofreservation += 1;
@@ -211,28 +227,49 @@ public class ViewAvailabilitydateController {
             }
         }
         //Number of max prenotations hour
-        if (numberofreservation > 1)
+        if (numberofreservation >= MAX_NUMBER_RESERVATION)
             return 1;
-        return  0;
+        return 0;
     }
 
-    public  void onClickConfirme() throws IOException {
+    public void onClickConfirme() throws IOException {
 
-        LocalDate localDate= (LocalDate) dateview.getSelectionModel().getSelectedItem();
+        LocalDate localDate = (LocalDate) dateview.getSelectionModel().getSelectedItem();
         LocalTime localtime = (LocalTime) timetables.getSelectionModel().getSelectedItem();
 
-        if(localDate!= null || localtime != null) {
+        if (localDate != null || localtime != null) {
             if (hourmanaged(localtime) > 0) {
+                //TODO: set Personalized window for this error
                 newWindow("popup", 300, 200);
             } else {
-                //TODO: send PUL
+                Long idVaccine = getReservationIdVaccine(localDate, localtime);
+                Reservation reservation = new Reservation(new IdReservation(idVaccine, userTempMemory.getFiscalcode()), clinicName, localDate, localtime);
+                String jsonString = RequestMaker.sendPOST(RESERVATIONS_ENDPOINT, reservation);
+                Reservation response = objectMapper.readValue(jsonString, Reservation.class);
 
-                // TODO: subctract quantity to vaccine
+                //TODO: set Personalized window for this error
+                if (response == null) {
+                    newWindow("popup", 300, 200);
+                }
+                else{
+                    newWindow("DONE");
+                }
             }
-        }
-        else{
+
+        } else {
             //TODO: ERROR MESSAGE nothing selected
         }
+    }
+
+    private Long getReservationIdVaccine(LocalDate choice , LocalTime time1 ) {
+        for (Availability obj : availability) {
+            if (choice.isBefore(obj.getEndDate().plusDays(1)) && choice.isAfter(obj.getStartDate().minusDays(1))){
+                if(obj.getStartHour().isBefore(time1.plusHours(1))&& obj.getEndHour().isAfter(time1.minusHours(1))){
+                    return obj.getAvailabilityId().getIdVaccine();
+                }
+            }
+        }
+        return null;
     }
 
     public void onCLickBackPage() throws IOException {

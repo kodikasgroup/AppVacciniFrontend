@@ -80,6 +80,7 @@ public class CampaignController {
         String jsonString = RequestMaker.sendGET(CITIZEN_ENDPOINT + "/" + userTempMemory.getFiscalcode());
         Citizen citizen = objectMapper.readValue(jsonString, Citizen.class);
 
+        //Todo: da sistemare !!!!!!!!
         //SEE non va dove deve
         String jsonString2 = RequestMaker.sendGET(ENTITLED_ENDPOINT);
         EntitledWrapper entitledWrapper = objectMapper.readValue(jsonString2, EntitledWrapper.class);
