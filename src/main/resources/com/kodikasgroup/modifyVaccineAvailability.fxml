@@ -1,23 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="218.0" prefWidth="484.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.ModifyVaccineAvailabilityController">
-	<MenuButton fx:id="vaccineMenuButton" layoutX="31.0" layoutY="44.0" mnemonicParsing="false" text="Vaccino" />
-	<Label layoutX="31.0" layoutY="25.0" text="Seleziona Vaccino:" />
-	<ButtonBar layoutX="118.0" layoutY="164.0" prefHeight="40.0" prefWidth="159.0">
-		<buttons>
-			<Button alignment="CENTER" mnemonicParsing="false" onAction="#cancel" text="Annulla" />
-			<Button fx:id="confirmButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="599.0" layoutY="17.0" mnemonicParsing="false" onAction="#confirm" text="Conferma" />
-		</buttons>
-		<opaqueInsets>
-			<Insets />
-		</opaqueInsets>
-	</ButtonBar>
-	<TextField fx:id="addAvailabilityField" layoutX="218.0" layoutY="44.0" />
-	<Label layoutX="218.0" layoutY="25.0" text="Di quanto vuoi aumentare le scorte?" />
-	<TextField fx:id="actualAvailabilityField" disable="true" editable="false" layoutX="31.0" layoutY="107.0" prefHeight="24.0" prefWidth="156.0" />
-	<Label layoutX="31.0" layoutY="88.0" text="Scorte Attuali:" />
-</AnchorPane>
+<Pane prefHeight="343.0" prefWidth="549.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.ModifyVaccineAvailabilityController">
+   <children>
+      <StackPane layoutX="2.0" layoutY="3.0" prefHeight="343.0" prefWidth="543.0">
+         <children>
+            <VBox prefHeight="347.0" prefWidth="543.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="73.0" prefWidth="158.0">
+                     <children>
+                        <Label prefHeight="16.0" prefWidth="132.0" text="Seleziona Vaccino:" textFill="#0e5b92" />
+                        <MenuButton fx:id="vaccineMenuButton" mnemonicParsing="false" style="-fx-background-color: #0e5b92;" text="Vaccino" textFill="#ebebeb" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="92.0" prefWidth="543.0">
+                     <children>
+                        <Label text="Scorte Attuali:" textAlignment="CENTER" textFill="#0e5b92" />
+                        <TextField fx:id="actualAvailabilityField" disable="true" editable="false" prefWidth="353.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 5;">
+                           <VBox.margin>
+                              <Insets left="100.0" right="100.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children></VBox>
+                  <VBox alignment="CENTER" prefHeight="78.0" prefWidth="543.0">
+                     <children>
+                        <Label text="Di quanto vuoi aumentare le scorte?" textAlignment="CENTER" textFill="#0e5b92">
+                           <VBox.margin>
+                              <Insets right="50.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="addAvailabilityField" prefWidth="353.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 5;">
+                           <VBox.margin>
+                              <Insets left="100.0" right="100.0" top="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <StackPane prefHeight="91.0" prefWidth="279.0">
+                           <children>
+                              <Button fx:id="annullaButton" alignment="CENTER" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #c23b22;" text="Annulla" textFill="#ebebeb" />
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="91.0" prefWidth="265.0">
+                           <children>
+                              <Button fx:id="confirmButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#confirm" style="-fx-background-color: #0e5b92;" text="Conferma" textFill="#ebebeb" />
+                           </children>
+                        </StackPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </children>
+</Pane>

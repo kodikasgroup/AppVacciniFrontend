@@ -29,7 +29,7 @@ public class AdminMainPageController {
 
 	public void goToModifyVaccineAvailability() throws IOException {
 		//App.setRoot("modifyVaccineAvailability", 484, 250);
-		newWindow("modifyVaccineAvailability", 484, 250);
+		newWindow("modifyVaccineAvailability", 570, 350);
 	}
 
 	public void goToAddAvailabilityPage() throws IOException {
