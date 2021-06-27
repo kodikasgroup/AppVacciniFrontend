@@ -22,9 +22,11 @@ import static com.kodikasgroup.App.setRoot;
 
 public class InsertNewVaccinationCampaignController {
 	@FXML
-	private TableView<Vaccine> vaccineTable;
+	private Button confirmButton;
 	@FXML
 	private TextField issueNameField;
+	@FXML
+	private TableView<Vaccine> vaccineTable;
 	@FXML
 	private TableColumn<Vaccine, Long> vaccineIdColumn;
 	@FXML
@@ -57,7 +59,10 @@ public class InsertNewVaccinationCampaignController {
 	private void goBack() throws IOException {
 		issueName = "";
 		tempMemory.setFromVaccinationCampaignController(false);
-		setRoot("adminMainPage");
+		// get a handle to the stage
+		Stage stage = (Stage) confirmButton.getScene().getWindow();
+		// do what you have to do
+		stage.close();
 	}
 
 	public void cancel() throws IOException {

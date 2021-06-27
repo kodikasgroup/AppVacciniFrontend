@@ -46,11 +46,11 @@
                                           <HBox prefHeight="27.0" prefWidth="272.0">
                                              <children>
                                                 <Button fx:id="indietroclick" mnemonicParsing="false" onAction="#backroclick" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: #0e5b92;" text="&lt;- Indietro " textFill="#ebebeb" />
-                                                <TextArea fx:id="datearea" prefHeight="13.0" prefWidth="105.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 15; -fx-padding: 2;" />
+                                                <TextArea fx:id="datearea" prefHeight="24.0" prefWidth="103.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 15; -fx-padding: 2; -fx-background-radius: 15;" />
                                                 <Button fx:id="avanticlick" mnemonicParsing="false" onAction="#forwardclick" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #0e5b92;" text="Avanti -&gt;" textFill="#ebebeb" />
                                              </children>
                                           </HBox>
-                                          <ListView fx:id="dateview" prefHeight="300.0" prefWidth="280.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 15;" />
+                                          <ListView fx:id="dateview" prefHeight="300.0" prefWidth="280.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 15; -fx-background-radius: 15;" />
                                        </children>
                                     </VBox>
                                     <StackPane prefHeight="428.0" prefWidth="323.0">
@@ -67,7 +67,7 @@
                                           </Label>
                                           <Pane prefHeight="36.0" prefWidth="301.0" />
                                           <Accordion />
-                                          <ListView fx:id="timetables" prefHeight="314.0" prefWidth="301.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 15;" />
+                                          <ListView fx:id="timetables" prefHeight="314.0" prefWidth="301.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 15; -fx-background-radius: 15;" />
                                        </children>
                                     </VBox>
                                  </children>

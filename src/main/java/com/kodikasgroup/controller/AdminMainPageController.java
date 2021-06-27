@@ -22,12 +22,14 @@ public class AdminMainPageController {
 
 	public void goToAddVaccinationCampaign() throws IOException {
 		TempMemory.getINSTANCE().resetVaccines();
-		App.setRoot("insertNewVaccinationCampaign", 720, 420);
+//		App.setRoot("insertNewVaccinationCampaign");
+		newWindow("insertNewVaccinationCampaign", 550, 480);
+//		App.setRoot("insertNewVaccinationCampaign", 720, 420);
 	}
 
 	public void goToModifyVaccineAvailability() throws IOException {
 		//App.setRoot("modifyVaccineAvailability", 484, 250);
-		newWindow("modifyVaccineAvailability", 484, 250);
+		newWindow("modifyVaccineAvailability", 570, 350);
 	}
 
 	public void goToAddAvailabilityPage() throws IOException {
