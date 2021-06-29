@@ -13,6 +13,7 @@ import javafx.stage.Window;
 import javafx.util.Callback;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.*;
 
 import static com.kodikasgroup.App.newWindow;
@@ -90,7 +91,8 @@ public class CampaignController {
 
         //Todo: da sistemare !!!!!!!!
         //SEE non va dove deve
-        String jsonString2 = RequestMaker.sendGET(ENTITLED_ENDPOINT);
+       // String jsonString2 = RequestMaker.sendGET(ENTITLED_ENDPOINT);
+        String jsonString2 = RequestMaker.sendGET(ENTITLED_ENDPOINT + "/" + URLEncoder.encode(citizen.getCategory(), "UTF-8"));
         EntitledWrapper entitledWrapper = objectMapper.readValue(jsonString2, EntitledWrapper.class);
 
         Set<Long> vaccineID = new LinkedHashSet<>();
