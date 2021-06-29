@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -23,6 +24,7 @@ public class ModifyVaccineAvailabilityController {
 	@FXML private TextField actualAvailabilityField;
 	@FXML private MenuButton vaccineMenuButton;
 	@FXML private Button confirmButton;
+	@FXML private Button annullaButton;
 	private static final ObjectMapper objectMapper = new ObjectMapper();
 	private static VaccineWrapper vaccineWrapper;
 	private static final String VACCINE_ENDPOINT = "/vaccines";
@@ -76,12 +78,15 @@ public class ModifyVaccineAvailabilityController {
 		return Pattern.matches(pattern, vaccineQuantity);
 	}
 
-	public void goBack() throws IOException {
-		App.setRoot("adminMainPage");
-	}
+//	public void goBack() throws IOException {
+//		App.setRoot("adminMainPage");
+//	}
 
 	public void cancel() throws IOException {
-		goBack();
+		// get a handle to the stage
+		Stage stage = (Stage) annullaButton.getScene().getWindow();
+		// do what you have to do
+		stage.close();
 	}
 
 	public void confirm() throws IOException {
@@ -95,7 +100,10 @@ public class ModifyVaccineAvailabilityController {
 							optionalVaccine.get().getVaccineID() +
 							"/quantity/" + addAvailabilityField.getText()
 			);
-			goBack();
+			// get a handle to the stage
+			Stage stage = (Stage) confirmButton.getScene().getWindow();
+			// do what you have to do
+			stage.close();
 		} else {
 			newWindow("popup", 300, 200);
 		}

@@ -1,10 +1,12 @@
 package com.kodikasgroup.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kodikasgroup.App;
 import com.kodikasgroup.model.Vaccine;
 import com.kodikasgroup.utils.RequestMaker;
 import com.kodikasgroup.utils.TempMemory;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -21,6 +23,8 @@ public class InsertNewVaccineController {
 
 	@FXML private TextField vaccineNameField;
 	@FXML private TextField vaccineQuantityField;
+	@FXML private Button confirmButton;
+	@FXML private Button annullaButton;
 
 	@FXML
 	public void initialize() {
@@ -39,14 +43,17 @@ public class InsertNewVaccineController {
 
 	private void changeWindow() throws IOException {
 		if (tempMemory.isFromVaccinationCampaignController()) {
-			setRoot("insertNewVaccinationCampaign", 720, 450);
+			App.setRoot("insertNewVaccinationCampaign");
+			Stage stage = (Stage) confirmButton.getScene().getWindow();
+			stage.close();
 		} else {
 			setRoot("adminMainPage");
 		}
 	}
 
 	public void cancel() throws IOException {
-		changeWindow();
+		Stage stage = (Stage) annullaButton.getScene().getWindow();
+		stage.close();
 	}
 
 	private void sendData() throws IOException {

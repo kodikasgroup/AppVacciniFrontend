@@ -22,8 +22,8 @@ public class AdminMainPageController {
 
 	public void goToAddVaccinationCampaign() throws IOException {
 		TempMemory.getINSTANCE().resetVaccines();
-//		App.setRoot("insertNewVaccinationCampaign");
-		newWindow("insertNewVaccinationCampaign", 550, 480);
+		App.setRoot("insertNewVaccinationCampaign");
+		//newWindow("insertNewVaccinationCampaign", 550, 480);
 //		App.setRoot("insertNewVaccinationCampaign", 720, 420);
 	}
 

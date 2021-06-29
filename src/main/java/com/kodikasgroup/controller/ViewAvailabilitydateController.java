@@ -12,6 +12,7 @@ import com.kodikasgroup.wrapper.AvailabilityWrapper;
 import com.kodikasgroup.wrapper.ReservationWrapper;
 import com.kodikasgroup.wrapper.VaccineIdWrapper;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
@@ -39,7 +40,7 @@ public class ViewAvailabilitydateController {
     ListView timetables;
 
     @FXML
-    TextArea datearea;
+    Label datearea;
 
     String DEFAULT_CONTROL_INNER_BACKGROUND = "derive(-fx-base,80%)";
     String GREEN_CONTROL_INNER_BACKGROUND = "derive(palegreen, 50%)";
@@ -59,19 +60,19 @@ public class ViewAvailabilitydateController {
 
         userTempMemory = UserTempMemory.getINSTANCE();
 
-//        //todo: Test Mode isolatio page
-//        List<Long> testids = List.of(1L, 2L);
-//        VaccineIdWrapper ids = new VaccineIdWrapper(testids);
-//        String data = RequestMaker.sendGET("availability" + "/idvaccine" + "?ids=", ids);
-//        AvailabilityWrapper result = objectMapper.readValue(data, AvailabilityWrapper.class);
-//        availability = new ArrayList<>();
-//        for (Availability obj : result.getAvailability()) {
-//            availability.add(obj);
-//        }
-//        userTempMemory.setFiscalcode("BRTCRL30A29E684P");
+        //todo: Test Mode isolatio page
+        List<Long> testids = List.of(1L, 2L);
+        VaccineIdWrapper ids = new VaccineIdWrapper(testids);
+        String data = RequestMaker.sendGET("availability" + "/idvaccine" + "?ids=", ids);
+        AvailabilityWrapper result = objectMapper.readValue(data, AvailabilityWrapper.class);
+        availability = new ArrayList<>();
+        for (Availability obj : result.getAvailability()) {
+            availability.add(obj);
+        }
+        userTempMemory.setFiscalcode("BRTCRL30A29E684P");
 
         //todo: UNCOMMENT and delete test mode
-        availability = userTempMemory.getAvailability();
+        //availability = userTempMemory.getAvailability();
         clinicName = (availability.get(0)).getAvailabilityId().getClinicName();
         date = LocalDate.now();
         getListViewDate();
@@ -241,7 +242,7 @@ public class ViewAvailabilitydateController {
         if (localDate != null || localtime != null) {
             if (hourmanaged(localtime) > 0) {
                 //TODO: set Personalized window for this error
-                newWindow("popup", 300, 200);
+                newWindow("unselectedfieldsERROR", 300, 200);
             } else {
                 Long idVaccine = getReservationIdVaccine(localDate, localtime);
                 Reservation reservation = new Reservation(new IdReservation(idVaccine, userTempMemory.getFiscalcode()), clinicName, localDate, localtime);
@@ -250,7 +251,7 @@ public class ViewAvailabilitydateController {
 
                 //TODO: set Personalized window for this error
                 if (response == null) {
-                    newWindow("popup", 300, 200);
+                    newWindow("failedERROR", 300, 200);
                 }
                 else{
                     userTempMemory.setClinicname(clinicName);

@@ -11,18 +11,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="486.0" prefWidth="549.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.InsertNewVaccineController">
+<Pane prefHeight="300.0" prefWidth="500.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.InsertNewVaccineController">
    <children>
-      <StackPane layoutX="2.0" layoutY="3.0" prefHeight="486.0" prefWidth="543.0">
+      <StackPane layoutX="2.0" layoutY="3.0" prefHeight="300.0" prefWidth="500.0">
          <children>
-            <VBox prefHeight="273.0" prefWidth="351.0">
+            <VBox prefHeight="444.0" prefWidth="543.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="53.0" prefWidth="543.0" text="Inserisci i Dati del Vaccino" textAlignment="CENTER">
+                  <Label alignment="CENTER" prefHeight="65.0" prefWidth="543.0" text="Inserisci i Dati del Vaccino" textAlignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <VBox prefHeight="89.0" prefWidth="543.0">
+                  <VBox prefHeight="73.0" prefWidth="543.0">
                      <children>
                         <Text fill="#0e5b92" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Vaccino">
                            <VBox.margin>
@@ -36,7 +36,7 @@
                         </TextField>
                      </children>
                   </VBox>
-                  <VBox prefHeight="89.0" prefWidth="543.0">
+                  <VBox prefHeight="68.0" prefWidth="543.0">
                      <children>
                         <Text fill="#0e5b92" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantità">
                            <VBox.margin>

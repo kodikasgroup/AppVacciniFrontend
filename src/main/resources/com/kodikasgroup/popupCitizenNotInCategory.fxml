@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0"
-			prefWidth="300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.PopupController">
-	<Button layoutX="123.0" layoutY="162.0" mnemonicParsing="false" text="Close" onAction="#closeWindow" fx:id="closeButton"/>
-	<Text fill="RED" layoutX="27.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0"
-		  text="Attenzione non appartieni alle categorie che attualmente possono prenotare." wrappingWidth="245.6923828125"/>
-	<Text fill="RED" layoutX="120.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ERRORE">
-		<font>
-			<Font name="System Bold" size="13.0"/>
-		</font>
-	</Text>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 20; -fx-background-radius: 30; -fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.alreadyreservedController">
+   <Button fx:id="closeButton" alignment="CENTER" layoutX="123.0" layoutY="161.0" mnemonicParsing="false" onAction="#closeWindow" style="-fx-background-color: #c23b22;" text="CHIUDI" textFill="#ebebeb" />
+	<Text layoutX="47.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attenzione non appartieni alle categorie che attualmente possono prenotare." wrappingWidth="221.6923828125">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font>
+   </Text>
+   <Label alignment="CENTER" layoutX="113.0" layoutY="14.0" prefHeight="47.0" prefWidth="75.0" text="ERROR" textFill="#c23b22" />
 </AnchorPane>

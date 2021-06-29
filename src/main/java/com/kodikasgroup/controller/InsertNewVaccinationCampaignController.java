@@ -59,10 +59,7 @@ public class InsertNewVaccinationCampaignController {
 	private void goBack() throws IOException {
 		issueName = "";
 		tempMemory.setFromVaccinationCampaignController(false);
-		// get a handle to the stage
-		Stage stage = (Stage) confirmButton.getScene().getWindow();
-		// do what you have to do
-		stage.close();
+		setRoot("adminMainPage");
 	}
 
 	public void cancel() throws IOException {
@@ -89,6 +86,6 @@ public class InsertNewVaccinationCampaignController {
 	public void insertVaccine() throws IOException {
 		issueName = issueNameField.getText();
 		tempMemory.setFromVaccinationCampaignController(true);
-		setRoot("insertNewVaccine", 600, 160);
+		newWindow("insertNewVaccine", 500, 300);
 	}
 }

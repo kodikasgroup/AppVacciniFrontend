@@ -87,6 +87,7 @@ public class ViewAvailabilityController {
 
         if(selected  == null || selected.equals("Al momento non risultano sedi disponibili")){
             //TODO: EROR POPUP
+            newWindow("unselectedfieldsERROR", 300, 200);
         }
         else {
             nextPage(selected);

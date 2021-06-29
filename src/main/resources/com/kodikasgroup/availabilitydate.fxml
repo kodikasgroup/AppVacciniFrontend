@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -46,11 +45,11 @@
                                           <HBox prefHeight="27.0" prefWidth="272.0">
                                              <children>
                                                 <Button fx:id="indietroclick" mnemonicParsing="false" onAction="#backroclick" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: #0e5b92;" text="&lt;- Indietro " textFill="#ebebeb" />
-                                                <TextArea fx:id="datearea" prefHeight="24.0" prefWidth="103.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 15; -fx-padding: 2; -fx-background-radius: 15;" />
+                                                <Label fx:id="datearea" alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="97.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 15;" />
                                                 <Button fx:id="avanticlick" mnemonicParsing="false" onAction="#forwardclick" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #0e5b92;" text="Avanti -&gt;" textFill="#ebebeb" />
                                              </children>
                                           </HBox>
-                                          <ListView fx:id="dateview" prefHeight="300.0" prefWidth="280.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 15; -fx-background-radius: 15;" />
+                                          <ListView fx:id="dateview" prefHeight="300.0" prefWidth="280.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 20; -fx-background-radius: 20; -fx-selection-bar-non-focused: #0e5b92;" />
                                        </children>
                                     </VBox>
                                     <StackPane prefHeight="428.0" prefWidth="323.0">
