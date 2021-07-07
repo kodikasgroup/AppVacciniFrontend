@@ -8,7 +8,6 @@ import java.io.IOException;
 
 import static com.kodikasgroup.App.newWindow;
 
-//TODO: MODIFY insertNewVaccinationCampaign ALLOWING user TO SELECT EXISTING VACCINES
 public class AdminMainPageController {
 
 	public void goToAddVaccine() throws IOException {

@@ -42,6 +42,7 @@ public class LoginController {
 		} else if (text.equals("no vax")){
 			// TODO EASTEREGG
 		} else if (text.equals("testmode")){
+			// TODO remove testmode
 			//Over 80
 			userTempMemory = UserTempMemory.getINSTANCE();
 			userTempMemory.setFiscalcode("BRTCRL30A29E684P");
@@ -77,7 +78,7 @@ public class LoginController {
 					}
 				}
 			} else {
-				showErrorMessage();
+				newWindow("anomalia", 300, 200);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
