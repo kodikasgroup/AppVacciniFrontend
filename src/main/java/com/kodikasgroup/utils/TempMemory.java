@@ -6,13 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TempMemory {
+	private static TempMemory INSTANCE;
 	private List<Vaccine> vaccines = new ArrayList<>();
 	private boolean fromVaccinationCampaignController = false;
-	private static final TempMemory INSTANCE = new TempMemory();
 
-	private TempMemory(){}
+	private TempMemory() {
+	}
 
 	public static TempMemory getINSTANCE() {
+		if (INSTANCE == null) {
+			INSTANCE = new TempMemory();
+		}
 		return INSTANCE;
 	}
 

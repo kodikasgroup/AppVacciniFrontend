@@ -20,6 +20,16 @@ public class UserTempMemory {
     private String clinicname ;
     private LocalDate localDate;
     private LocalTime localTime;
+    private static UserTempMemory INSTANCE;
+
+    private UserTempMemory(){}
+
+    public static UserTempMemory getINSTANCE() {
+        if (INSTANCE == null) {
+            INSTANCE = new UserTempMemory();
+        }
+        return INSTANCE;
+    }
 
     public String getClinicname() {
         return clinicname;
@@ -45,17 +55,9 @@ public class UserTempMemory {
         this.localTime = localTime;
     }
 
-    private static final UserTempMemory INSTANCE = new UserTempMemory();
-
-    private UserTempMemory(){}
-
-    public static UserTempMemory getINSTANCE() {
-        return INSTANCE;
-    }
-
     public List<Vaccine> getVaccines (){
         if(vaccines.isEmpty())
-        vaccines = List.copyOf(campaign.getVaccines());
+            vaccines = List.copyOf(campaign.getVaccines());
         return vaccines;
     }
 
