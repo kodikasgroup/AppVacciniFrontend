@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1080.0" style="-fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.LoginController">
     <children>
-        <Label layoutX="266.0" layoutY="40.0" prefHeight="68.0" prefWidth="449.0" text="Prenotazione vaccinazione">
+        <Label layoutX="266.0" layoutY="40.0" prefHeight="68.0" prefWidth="556.0" text="Prenotazione vaccinazione">
             <font>
                 <Font name="System Bold" size="35.0" />
             </font>
@@ -94,7 +94,7 @@
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-        <Label layoutX="770.0" layoutY="189.0" prefHeight="68.0" prefWidth="225.0" style="-fx-underline: true;" text="4.Giorno                " textFill="#a2acb5">
+        <Label layoutX="770.0" layoutY="189.0" prefHeight="68.0" prefWidth="225.0" style="-fx-underline: true;" text="4. Giorno                " textFill="#a2acb5">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>

@@ -9,16 +9,20 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.net.URL;
 
 import static com.kodikasgroup.utils.RequestMaker.initializeRequestMaker;
 
 public class App extends Application {
 
 	private static Scene scene;
+	private static String fileCss;
 
 	@Override
 	public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("login"));
+        fileCss = getClass().getResource("application.css").toExternalForm();
+		scene.getStylesheets().add(fileCss);
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -51,6 +55,7 @@ public class App extends Application {
 		stage.setScene(new Scene(loadFXML(fxml), width, height));
 		stage.getScene().setFill(Color.TRANSPARENT);
 		stage.initStyle(StageStyle.TRANSPARENT);
+		stage.getScene().getStylesheets().add(fileCss);
 		stage.show();
 	}
 

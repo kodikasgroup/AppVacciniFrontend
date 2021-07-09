@@ -18,7 +18,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1080.0" style="-fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.InsertNewVaccinationCampaignController">
     <children>
-        <Label layoutX="266.0" layoutY="40.0" prefHeight="68.0" prefWidth="449.0" text="Prenotazione vaccinazione">
+        <Label layoutX="266.0" layoutY="40.0" prefHeight="68.0" prefWidth="543.0" text="Prenotazione vaccinazione">
             <font>
                 <Font name="System Bold" size="35.0" />
             </font>
@@ -91,7 +91,7 @@
                 <Image url="@../../object/company_logo.png" />
             </image>
         </ImageView>
-        <Label layoutX="357.0" layoutY="182.0" prefHeight="68.0" prefWidth="366.0" style="-fx-underline: true;" text="    Nuova Campagna vaccinale    " textFill="#0e5b92">
+        <Label layoutX="309.0" layoutY="183.0" prefHeight="68.0" prefWidth="463.0" style="-fx-underline: true;" text="    Nuova Campagna vaccinale    " textFill="#0e5b92">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>
