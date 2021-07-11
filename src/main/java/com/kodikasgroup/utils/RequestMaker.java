@@ -25,9 +25,10 @@ public class RequestMaker {
 	private RequestMaker() {
 	}
 
-	public static void sendDELETE(String endpoint) throws IOException {
+	public static void sendDELETE(String endpoint,  Object payload) throws IOException {
 		HttpURLConnection con = getConnection(endpoint, "DELETE");
-
+		var jsonString = getJson(payload);
+		setPayload(jsonString, con);
 		int responseCode = con.getResponseCode();
 		logger.log(Level.ALL, () -> "DELETE Response Code :: " + responseCode);
 	}
