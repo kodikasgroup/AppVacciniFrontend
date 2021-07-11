@@ -5,6 +5,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.kodikasgroup.model.Citizen;
 import com.kodikasgroup.utils.RequestMaker;
 import com.kodikasgroup.utils.UserTempMemory;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import static com.kodikasgroup.App.setRoot;
 
 public class doneController {
 
@@ -25,6 +28,8 @@ public class doneController {
     Label labelcampaign;
     @FXML
     Button confirmButton;
+    @FXML
+    Button back;
 
     UserTempMemory userTempMemory;
     private static final String CITIZEN_ENDPOINT = "/citizens";
@@ -49,9 +54,13 @@ public class doneController {
         // get a handle to the stage
         Stage stage = (Stage) confirmButton.getScene().getWindow();
         // do what you have to do
+        Platform.exit();
         stage.close();
     }
 
-    public void onCLickBackLogin(ActionEvent actionEvent) {
+    public void onCLickBackLogin(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) back.getScene().getWindow();
+        setRoot("login");
+        stage.close();
     }
 }

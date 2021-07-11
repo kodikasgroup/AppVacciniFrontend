@@ -82,7 +82,7 @@ public class RegistrationController {
 					Citizen citizen = objectMapper.readValue(response, Citizen.class);
 					Citizen insertedCitizen = getData();
 					if (!citizen.equals(insertedCitizen)) {
-						setRoot("anomalia");
+						setRoot("login");
 					}
 				} else {
 					setRoot("anomalia");

@@ -75,7 +75,7 @@ public class LoginController {
 						userTempMemory.setFiscalcode(text);
 						App.setRoot("campaign");
 					} else {
-						setRoot("registration", 755, 400);
+						setRoot("registration");
 					}
 				}
 			} else {

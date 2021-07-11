@@ -29,7 +29,7 @@ public class CampaignController {
     private static final String VACCINE_ENDPOINT = "/vaccines";
     private static final String RESERVATION_ENDPOINT = "/reservations";
     private static final String NOTIFICATIONS_ENDPOINT = "/notifications";
-    private static final String AVAILABILITY_ENDPOINT = "availability";
+    private static final String AVAILABILITY_ENDPOINT = "/availability";
     private static final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
     private UserTempMemory userTempMemory;
 
@@ -182,15 +182,19 @@ public class CampaignController {
             for (Notification notification : notifications) {
                 if (newAvailanility(notification)) {
                     idcampaignnotify.add(notification.getIdNotification().getCampaignId());
+                    RequestMaker.sendDELETE(NOTIFICATIONS_ENDPOINT+"/"+notification);
                 }
             }
-            for (VaccinationCampaign entry : availabelecampain) {
-                for (Long id : idcampaignnotify)
-                    if (entry.getCampaignID() == id) {
-                        campaignname = campaignname + entry.getDiseaseName();
-                    }
+            if(!idcampaignnotify.isEmpty()) {
+                for (VaccinationCampaign entry : availabelecampain) {
+                    for (Long id : idcampaignnotify)
+                        if (entry.getCampaignID() == id) {
+                            campaignname = campaignname + entry.getDiseaseName();
+                        }
+                }
+                userTempMemory.setNewAvailabilityNotify(campaignname);
+                newWindow("notifypopup",300,200);
             }
-            userTempMemory.setNewAvailabilityNotify(campaignname);
         }
     }
 

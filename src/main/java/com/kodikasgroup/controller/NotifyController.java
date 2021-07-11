@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,6 +25,8 @@ public class NotifyController {
     @FXML private DatePicker startDateField;
     @FXML private DatePicker endDateField;
     @FXML private Button confirmButton;
+    @FXML private Button backButton;
+    @FXML private Text errorMessage;
 
     UserTempMemory userTempMemory;
     private static final String NOTIFICATIONS_ENDPOINT = "/notifications";
@@ -36,9 +39,9 @@ public class NotifyController {
         userTempMemory = UserTempMemory.getINSTANCE();
     }
     private boolean isValidData() {
-        boolean dateNotNull = startDateField.getValue() != null && endDateField.getValue() != null;
-        boolean validDate = startDateField.getValue().isBefore(endDateField.getValue());
-        return validDate && dateNotNull;
+        if(startDateField.getValue() != null && endDateField.getValue() != null)
+            return startDateField.getValue().isBefore(endDateField.getValue());
+        return false;
     }
 
     private Notification getData(){
@@ -55,15 +58,22 @@ public class NotifyController {
             RequestMaker.sendPOST(NOTIFICATIONS_ENDPOINT,notification);
 
             Stage stage = (Stage) confirmButton.getScene().getWindow();
+            setRoot("login");
             stage.close();
         }
         else
         {
-            //TODO:
+            showErrorMessage();
         }
     }
 
     public void onCLickBackLogin() throws IOException {
+        Stage stage = (Stage) backButton.getScene().getWindow();
         setRoot("login");
+        stage.close();
+    }
+
+    private void showErrorMessage() {
+        errorMessage.setVisible(true);
     }
 }
