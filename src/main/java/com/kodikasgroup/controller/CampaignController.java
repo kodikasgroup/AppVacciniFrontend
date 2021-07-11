@@ -182,7 +182,7 @@ public class CampaignController {
             for (Notification notification : notifications) {
                 if (newAvailanility(notification)) {
                     idcampaignnotify.add(notification.getIdNotification().getCampaignId());
-                    RequestMaker.sendDELETE(NOTIFICATIONS_ENDPOINT+"/"+notification);
+                    RequestMaker.sendDELETE(NOTIFICATIONS_ENDPOINT+"/"+notification,null);
                 }
             }
             if(!idcampaignnotify.isEmpty()) {

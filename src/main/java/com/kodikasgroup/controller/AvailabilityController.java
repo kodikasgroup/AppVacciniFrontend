@@ -9,7 +9,9 @@ import com.kodikasgroup.utils.RequestMaker;
 import com.kodikasgroup.utils.Utils;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
@@ -31,6 +33,7 @@ public class AvailabilityController {
 	@FXML private DatePicker endDateField;
 	@FXML private TextField clinicNameField;
 	@FXML private Button confirmButton;
+	@FXML private AnchorPane anchorpane;
 	private static final ObjectMapper objectMapper = new ObjectMapper();
 	private static VaccineWrapper vaccineWrapper;
 	private static final String VACCINE_ENDPOINT = "/vaccines";
@@ -56,9 +59,11 @@ public class AvailabilityController {
 			});
 			vaccineMenuButton.setText(vaccineMenuButton.getItems().get(0).getText());
 		} else {
+			Stage stage = (Stage) anchorpane.getScene().getWindow();
 			newWindow("popupNoVaccineAvailable", 300, 200);
-			confirmButton.setDisable(true);
-			vaccineMenuButton.setDisable(true);
+			stage.close();
+			//confirmButton.setDisable(true);
+			//vaccineMenuButton.setDisable(true);
 		}
 	}
 
