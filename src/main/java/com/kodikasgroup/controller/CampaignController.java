@@ -1,5 +1,6 @@
 package com.kodikasgroup.controller;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.kodikasgroup.model.*;
@@ -14,6 +15,7 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.time.LocalDate;
 import java.util.*;
 
 import static com.kodikasgroup.App.newWindow;
@@ -26,6 +28,8 @@ public class CampaignController {
     private static final String ENTITLED_ENDPOINT = "/entitled";
     private static final String VACCINE_ENDPOINT = "/vaccines";
     private static final String RESERVATION_ENDPOINT = "/reservations";
+    private static final String NOTIFICATIONS_ENDPOINT = "/notifications";
+    private static final String AVAILABILITY_ENDPOINT = "availability";
     private static final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
     private UserTempMemory userTempMemory;
 
@@ -46,6 +50,7 @@ public class CampaignController {
 
         userTempMemory = UserTempMemory.getINSTANCE();
         viewall();
+        notificationCheck();
     }
     private void viewall() throws IOException {
 
@@ -151,7 +156,7 @@ public class CampaignController {
             //TODO: ERROR POPUP uno o piu cambi non sembrano selezionati
             newWindow("unselectedfieldsERROR", 300, 200);
         } else if (campaigndeactivates(choice)){
-            //TODO: ERROR POP UP gia perenotato
+            //TODO: ERROR POP UP gia prenotato
             newWindow("alreadyreserved", 300, 200);
         }else{
             for (VaccinationCampaign obj : availabelecampain) {
@@ -167,4 +172,58 @@ public class CampaignController {
     }
 
 
+    private void notificationCheck() throws IOException {
+        String jsonString = RequestMaker.sendGET(NOTIFICATIONS_ENDPOINT+"/"+userTempMemory.getFiscalcode());
+        List<Notification> notifications = objectMapper.readValue(jsonString, new TypeReference<List<Notification>>(){});
+        Set<Long> idcampaignnotify = new HashSet<>();
+        String campaignname = "Nuove Disponibilitá in : ";
+
+        if(!notifications.isEmpty()) {
+            for (Notification notification : notifications) {
+                if (newAvailanility(notification)) {
+                    idcampaignnotify.add(notification.getIdNotification().getCampaignId());
+                }
+            }
+            for (VaccinationCampaign entry : availabelecampain) {
+                for (Long id : idcampaignnotify)
+                    if (entry.getCampaignID() == id) {
+                        campaignname = campaignname + entry.getDiseaseName();
+                    }
+            }
+            userTempMemory.setNewAvailabilityNotify(campaignname);
+        }
+    }
+
+    private boolean newAvailanility(Notification notification) throws IOException {
+        for(VaccinationCampaign entry : availabelecampain){
+            if(notification.getIdNotification().getCampaignId() == entry.getCampaignID()){
+                AvailabilityWrapper availabilityWrapper = getAllIdvaccines(getIdVaccines(entry));
+
+                for (Availability obj : availabilityWrapper.getAvailability()) {
+                    if (notification.getStartDate().isAfter(obj.getStartDate().minusDays(1)) && notification.getEndDate().isBefore(obj.getEndDate().plusDays(1)))
+                        return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public VaccineIdWrapper getIdVaccines(VaccinationCampaign campaign) {
+
+        List<Vaccine> vaccines = List.copyOf(campaign.getVaccines());
+            if (vaccines.isEmpty()) {
+                return null;
+            }
+
+        List<Long> ids = new ArrayList<>();
+        for (Vaccine vaccine : vaccines){
+            ids.add(vaccine.getVaccineID());
+        }
+        return new VaccineIdWrapper(ids);
+    }
+    private AvailabilityWrapper getAllIdvaccines(VaccineIdWrapper ids) throws IOException {
+        String data = RequestMaker.sendGET(AVAILABILITY_ENDPOINT + "/idvaccine" + "?ids=" , ids);
+        AvailabilityWrapper result = objectMapper.readValue(data, AvailabilityWrapper.class);
+        return result;
+    }
 }

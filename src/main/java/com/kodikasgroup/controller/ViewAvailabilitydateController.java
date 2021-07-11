@@ -166,7 +166,7 @@ public class ViewAvailabilitydateController {
             printtimetables(selected);
         } else {
             timetables.getItems().clear();
-            timetables.getItems().addAll("EH SORRY BRO NO ROBA QUA");
+            timetables.getItems().addAll("Non risulta nessuna disponibilitá");
         }
     }
 
@@ -280,4 +280,9 @@ public class ViewAvailabilitydateController {
     public void onCLickBackPage() throws IOException {
         setRoot("availabilitypage");
     }
+
+    public void  onClickNotify() throws IOException {
+        newWindow("notify", 900 ,450);
+    }
+
 }

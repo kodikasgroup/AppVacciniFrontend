@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="900.0" style="-fx-border-color: #0e5b92; -fx-border-width: 1; -fx-border-radius: 20; -fx-background-radius: 30; -fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.NotifyController">
+   <children>
+      <ImageView fitHeight="143.0" fitWidth="191.0" layoutX="14.0" layoutY="14.0">
+         <image>
+            <Image url="@../../object/company_logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="213.0" layoutY="31.0" prefHeight="68.0" prefWidth="546.0" text="Prenotazione vaccinazione">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Label>
+      <Label layoutX="387.0" layoutY="86.0" prefHeight="52.0" prefWidth="156.0" text="Aulss9">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Button layoutX="58.0" layoutY="383.0" mnemonicParsing="false" onAction="#onCLickBackLogin" prefHeight="34.0" prefWidth="217.0" style="-fx-background-color: #ffc107;" text="Torna all Pagina iniziale " textFill="#1e1e1e">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="confirmButton" layoutX="579.0" layoutY="383.0" mnemonicParsing="false" onAction="#onClickConfirme" prefHeight="34.0" prefWidth="217.0" style="-fx-background-color: #0e5b92;" text="Conferma e chiudi" textFill="#ebebeb">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutX="26.0" layoutY="174.0" prefHeight="68.0" prefWidth="839.0" text="Imposta notifica di nuova disponibilitá" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="startDateField" editable="false" layoutX="147.0" layoutY="299.0" promptText="01/02/2021" style="-fx-border-color: #0e5b92; -fx-border-radius: 5;" />
+      <Label layoutX="147.0" layoutY="282.0" text="Data Inizio:" textFill="#0e5b92" />
+      <DatePicker fx:id="endDateField" editable="false" layoutX="531.0" layoutY="299.0" promptText="05/02/2021" style="-fx-border-color: #0e5b92; -fx-border-radius: 5;" />
+      <Label layoutX="531.0" layoutY="282.0" text="Data Fine:" textFill="#0e5b92" />
+   </children>
+</AnchorPane>

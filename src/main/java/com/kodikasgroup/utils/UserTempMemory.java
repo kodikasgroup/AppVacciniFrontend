@@ -21,6 +21,7 @@ public class UserTempMemory {
     private LocalDate localDate;
     private LocalTime localTime;
     private static UserTempMemory INSTANCE;
+    private String newAvailabilityNotify ;
 
     private UserTempMemory(){}
 
@@ -97,8 +98,16 @@ public class UserTempMemory {
     public void addAvailability(Availability availability){
         this.availability.add(availability);
     }
-
+    public long getCampaignId(){return campaign.getCampaignID();}
     public void resetAvailability(){
         this.availability = new ArrayList<>();
+    }
+
+    public String getNewAvailabilityNotify() {
+        return newAvailabilityNotify;
+    }
+
+    public void setNewAvailabilityNotify(String newAvailabilityNotify) {
+        this.newAvailabilityNotify = newAvailabilityNotify;
     }
 }
