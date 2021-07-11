@@ -33,7 +33,6 @@ public class AvailabilityController {
 	@FXML private DatePicker endDateField;
 	@FXML private TextField clinicNameField;
 	@FXML private Button confirmButton;
-	@FXML private AnchorPane anchorpane;
 	private static final ObjectMapper objectMapper = new ObjectMapper();
 	private static VaccineWrapper vaccineWrapper;
 	private static final String VACCINE_ENDPOINT = "/vaccines";
@@ -59,11 +58,9 @@ public class AvailabilityController {
 			});
 			vaccineMenuButton.setText(vaccineMenuButton.getItems().get(0).getText());
 		} else {
-			Stage stage = (Stage) anchorpane.getScene().getWindow();
 			newWindow("popupNoVaccineAvailable", 300, 200);
-			stage.close();
-			//confirmButton.setDisable(true);
-			//vaccineMenuButton.setDisable(true);
+			confirmButton.setDisable(true);
+			vaccineMenuButton.setDisable(true);
 		}
 	}
 

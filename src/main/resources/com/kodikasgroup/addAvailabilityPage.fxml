@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchorpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="519.0" style="-fx-border-color: #0e5b92; -fx-border-width: 1; -fx-border-radius: 20; -fx-background-radius: 30; -fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.AvailabilityController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="519.0" style="-fx-border-color: #0e5b92; -fx-border-width: 1; -fx-border-radius: 20; -fx-background-radius: 30; -fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.AvailabilityController">
 	<MenuButton fx:id="vaccineMenuButton" layoutX="223.0" layoutY="38.0" mnemonicParsing="false" style="-fx-background-color: #0e5b92;" text="Vaccino" textFill="#ebebeb">
 	</MenuButton>
 	<Label layoutX="213.0" layoutY="14.0" prefHeight="16.0" prefWidth="132.0" text="Seleziona Vaccino:" textFill="#0e5b92" />
