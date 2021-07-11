@@ -46,6 +46,7 @@ public class LoginController {
 			//Over 80
 			userTempMemory = UserTempMemory.getINSTANCE();
 			userTempMemory.setFiscalcode("BRTCRL30A29E684P");
+//			goToUserPage("BRTCRL30A29E684P");
 			App.setRoot("campaign");
 		}
 		else {

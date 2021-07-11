@@ -14,7 +14,7 @@
             <Image url="@../../object/company_logo.png" />
          </image>
       </ImageView>
-      <Label layoutX="213.0" layoutY="31.0" prefHeight="68.0" prefWidth="449.0" text="Prenotazione vaccinazione">
+      <Label layoutX="213.0" layoutY="31.0" prefHeight="68.0" prefWidth="527.0" text="Prenotazione vaccinazione">
          <font>
             <Font name="System Bold" size="35.0" />
          </font>
@@ -24,7 +24,7 @@
             <Font name="System Bold" size="35.0" />
          </font>
       </Label>
-      <Label layoutX="387.0" layoutY="86.0" prefHeight="52.0" prefWidth="108.0" text="Aulss9">
+      <Label layoutX="387.0" layoutY="86.0" prefHeight="52.0" prefWidth="119.0" text="Aulss9">
          <font>
             <Font size="35.0" />
          </font>

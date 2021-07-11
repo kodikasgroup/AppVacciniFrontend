@@ -17,7 +17,7 @@
          <children>
             <VBox prefHeight="444.0" prefWidth="543.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="65.0" prefWidth="543.0" text="Inserisci i Dati del Vaccino" textAlignment="CENTER">
+                  <Label alignment="CENTER" prefHeight="65.0" prefWidth="543.0" text="Inserisci i Dati del Vaccino" textAlignment="CENTER" textFill="#0e5b92">
                      <font>
                         <Font size="24.0" />
                      </font>

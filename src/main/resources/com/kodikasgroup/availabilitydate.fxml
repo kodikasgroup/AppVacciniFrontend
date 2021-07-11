@@ -54,7 +54,7 @@
                                     </VBox>
                                     <StackPane prefHeight="334.0" prefWidth="323.0">
                                        <children>
-                                          <Button mnemonicParsing="false" onAction="#onCLickShowTimetables" prefHeight="55.0" prefWidth="124.0" style="-fx-background-color: #0e5b92;" text="Conferma Giorno -&gt;" textFill="#ebebeb" />
+                                          <Button mnemonicParsing="false" onAction="#onCLickShowTimetables" prefHeight="55.0" prefWidth="160.0" style="-fx-background-color: #0e5b92;" text="Conferma Giorno -&gt;" textFill="#ebebeb" />
                                        </children>
                                     </StackPane>
                                     <VBox prefHeight="363.0" prefWidth="301.0">
