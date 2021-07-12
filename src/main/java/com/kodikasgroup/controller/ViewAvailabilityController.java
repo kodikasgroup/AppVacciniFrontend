@@ -97,7 +97,7 @@ public class ViewAvailabilityController {
     private void nextPage(String select) throws IOException {
         userTempMemory.resetAvailability();
         for (Availability entity : availabilityWrapper.getAvailability()) {
-            if (entity.getAvailabilityId().getClinicName() == select) {
+            if (entity.getAvailabilityId().getClinicName().equals(select)) {
                 userTempMemory.addAvailability(entity);
             }
         }
