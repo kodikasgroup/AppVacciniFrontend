@@ -13,6 +13,6 @@
             <Font name="System Bold" size="13.0" />
          </font></Text>
       <Button fx:id="closeButton" alignment="CENTER" layoutX="114.0" layoutY="162.0" mnemonicParsing="false" onAction="#closeWindow" style="-fx-background-color: #c23b22;" text="CHIUDI" textFill="#ebebeb" />
-      <Label alignment="CENTER" layoutX="39.0" layoutY="14.0" prefHeight="47.0" prefWidth="205.0" text="Notifica  nuova Disponibilitá" textFill="#c23b22" />
+      <Label fx:id="nametitle" alignment="CENTER" layoutX="39.0" layoutY="14.0" prefHeight="47.0" prefWidth="205.0" text="Notifica  nuova Disponibilitá" textFill="#c23b22" />
 	</children>
 </AnchorPane>

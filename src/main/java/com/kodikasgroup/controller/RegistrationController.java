@@ -3,6 +3,7 @@ package com.kodikasgroup.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.kodikasgroup.model.Citizen;
+import com.kodikasgroup.utils.UserTempMemory;
 import com.kodikasgroup.utils.Utils;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
@@ -28,8 +29,11 @@ public class RegistrationController {
 	@FXML private TextField fiscalCodeField;
 	@FXML private TextField nameField;
 	@FXML private TextField surnameField;
-	@FXML
+
+	UserTempMemory userTempMemory;
+
 	public void initialize() {
+		userTempMemory = UserTempMemory.getINSTANCE();
 		objectMapper.registerModule(new JavaTimeModule());
 	}
 
@@ -57,8 +61,13 @@ public class RegistrationController {
 					Citizen citizen = objectMapper.readValue(response, Citizen.class);
 					String name = nameField.getText();
 					String surname = surnameField.getText();
-
-					// setRoot("login");
+					if(citizen.getName()!= name && citizen.getSurname() == surname){
+						newWindow("popup",300,200);
+					}
+					else{
+						userTempMemory.setNewAvailabilityNotify("La tua cattegoria é : " +citizen.getCategory() );
+						setRoot("login");
+					}
 				} else {
 					setRoot("anomalia");
 				}
