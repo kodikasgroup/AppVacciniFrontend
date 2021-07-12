@@ -60,19 +60,19 @@ public class ViewAvailabilitydateController {
 
         userTempMemory = UserTempMemory.getINSTANCE();
 
-        //todo: Test Mode isolatio page
-        List<Long> testids = List.of(1L, 2L);
-        VaccineIdWrapper ids = new VaccineIdWrapper(testids);
-        String data = RequestMaker.sendGET("availability" + "/idvaccine" + "?ids=", ids);
-        AvailabilityWrapper result = objectMapper.readValue(data, AvailabilityWrapper.class);
-        availability = new ArrayList<>();
-        for (Availability obj : result.getAvailability()) {
-            availability.add(obj);
-        }
-        userTempMemory.setFiscalcode("BRTCRL30A29E684P");
+//        //todo: Test Mode isolatio page
+//        List<Long> testids = List.of(1L, 2L);
+//        VaccineIdWrapper ids = new VaccineIdWrapper(testids);
+//        String data = RequestMaker.sendGET("availability" + "/idvaccine" + "?ids=", ids);
+//        AvailabilityWrapper result = objectMapper.readValue(data, AvailabilityWrapper.class);
+//        availability = new ArrayList<>();
+//        for (Availability obj : result.getAvailability()) {
+//            availability.add(obj);
+//        }
+//        userTempMemory.setFiscalcode("BRTCRL30A29E684P");
 
         //todo: UNCOMMENT and delete test mode
-        //availability = userTempMemory.getAvailability();
+        availability = userTempMemory.getAvailability();
         clinicName = (availability.get(0)).getAvailabilityId().getClinicName();
         date = LocalDate.now();
         getListViewDate();
@@ -88,8 +88,12 @@ public class ViewAvailabilitydateController {
                     "/idVaccine/" + obj.getAvailabilityId().getIdVaccine().toString() + "/date/" + day);
             temp = objectMapper.readValue(recive, ReservationWrapper.class);
             if (temp != null && temp.getReservations() != null) {
-                for (Reservation entry : temp.getReservations())
-                    allreservation.add(entry);
+                for (Reservation entry : temp.getReservations()) {
+                    if (userTempMemory.getIdVaccines().getIdVaccines().contains(entry.getReservationId().getIdVaccine())) {
+                        allreservation.add(entry);
+                    }
+                }
+
             }
         }
 
@@ -252,12 +256,11 @@ public class ViewAvailabilitydateController {
                 //TODO: set Personalized window for this error
                 if (response == null) {
                     newWindow("failedERROR", 300, 200);
-                }
-                else{
+                } else {
                     userTempMemory.setClinicname(clinicName);
                     userTempMemory.setLocalDate(localDate);
                     userTempMemory.setLocalTime(localtime);
-                    newWindow("done", 900 ,650);
+                    newWindow("done", 900, 650);
                 }
             }
 
@@ -266,10 +269,10 @@ public class ViewAvailabilitydateController {
         }
     }
 
-    private Long getReservationIdVaccine(LocalDate choice , LocalTime time1 ) {
+    private Long getReservationIdVaccine(LocalDate choice, LocalTime time1) {
         for (Availability obj : availability) {
-            if (choice.isBefore(obj.getEndDate().plusDays(1)) && choice.isAfter(obj.getStartDate().minusDays(1))){
-                if(obj.getStartHour().isBefore(time1.plusHours(1))&& obj.getEndHour().isAfter(time1.minusHours(1))){
+            if (choice.isBefore(obj.getEndDate().plusDays(1)) && choice.isAfter(obj.getStartDate().minusDays(1))) {
+                if (obj.getStartHour().isBefore(time1.plusHours(1)) && obj.getEndHour().isAfter(time1.minusHours(1))) {
                     return obj.getAvailabilityId().getIdVaccine();
                 }
             }
@@ -281,8 +284,8 @@ public class ViewAvailabilitydateController {
         setRoot("availabilitypage");
     }
 
-    public void  onClickNotify() throws IOException {
-        newWindow("notify", 900 ,450);
+    public void onClickNotify() throws IOException {
+        newWindow("notify", 900, 450);
     }
 
 }
