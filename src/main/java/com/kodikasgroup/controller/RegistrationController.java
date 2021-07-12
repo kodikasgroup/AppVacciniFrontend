@@ -26,46 +26,21 @@ public class RegistrationController {
 	private static final ObjectMapper objectMapper = new ObjectMapper();
 
 	@FXML private TextField fiscalCodeField;
-	@FXML private TextField cardNumberField;
 	@FXML private TextField nameField;
 	@FXML private TextField surnameField;
-	@FXML private DatePicker dobField;
-	@FXML private MenuButton categoryField;
-	@FXML private TextField placeOfBirthField;
-
 	@FXML
 	public void initialize() {
 		objectMapper.registerModule(new JavaTimeModule());
-		addListeners();
-		Utils.setDatePickerDateFormat(dobField);
-	}
-
-	private void addListeners() {
-		categoryField.getItems().forEach(
-				menuItem -> menuItem.setOnAction(
-						actionEvent -> categoryField.setText(
-								menuItem.getText()
-						)
-				)
-		);
 	}
 
 	private boolean areEmpty() {
 		return fiscalCodeField.getText().isEmpty() ||
-				cardNumberField.getText().isEmpty() ||
 				nameField.getText().isEmpty() ||
-				surnameField.getText().isEmpty() ||
-				dobField.getValue() == null;
-	}
-
-	private boolean isValidCardNumber() {
-		String cardNumber = cardNumberField.getText();
-		String pattern = "^\\d{18}$";
-		return Pattern.matches(pattern, cardNumber);
+				surnameField.getText().isEmpty() ;
 	}
 
 	private boolean isValidData() {
-		return !areEmpty() && isValidCardNumber() && isValidFiscalCode(fiscalCodeField.getText());
+		return !areEmpty() && isValidFiscalCode(fiscalCodeField.getText());
 	}
 
 	public void goToNextPage() throws IOException {
@@ -80,10 +55,10 @@ public class RegistrationController {
 					// set registered to true
 					response = sendPUT(CITIZEN_ENDPOINT + "/registered/" + fiscalCode, null);
 					Citizen citizen = objectMapper.readValue(response, Citizen.class);
-					Citizen insertedCitizen = getData();
-					if (!citizen.equals(insertedCitizen)) {
-						setRoot("login");
-					}
+					String name = nameField.getText();
+					String surname = surnameField.getText();
+
+					// setRoot("login");
 				} else {
 					setRoot("anomalia");
 				}
@@ -91,17 +66,5 @@ public class RegistrationController {
 				e.printStackTrace();
 			}
 		}
-	}
-
-	private Citizen getData() {
-		return new Citizen(
-				fiscalCodeField.getText(),
-				Long.parseLong(cardNumberField.getText()),
-				nameField.getText(),
-				surnameField.getText(),
-				placeOfBirthField.getText(),
-				dobField.getValue(),
-				categoryField.getText()
-		);
 	}
 }
