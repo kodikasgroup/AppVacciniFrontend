@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-border-color: #0e5b92; -fx-border-width: 1; -fx-border-radius: 20; -fx-background-radius: 30; -fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.doneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" style="-fx-border-color: #0e5b92; -fx-border-width: 1; -fx-border-radius: 20; -fx-background-radius: 30; -fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.DoneController">
    <children>
       <ImageView fitHeight="143.0" fitWidth="191.0" layoutX="14.0" layoutY="14.0">
          <image>

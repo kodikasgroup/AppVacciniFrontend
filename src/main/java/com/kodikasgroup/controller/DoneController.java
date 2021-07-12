@@ -16,7 +16,7 @@ import java.io.IOException;
 
 import static com.kodikasgroup.App.setRoot;
 
-public class doneController {
+public class DoneController {
 
     @FXML
     Label labelPlace;

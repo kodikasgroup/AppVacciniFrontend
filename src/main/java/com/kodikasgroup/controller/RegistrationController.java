@@ -25,12 +25,13 @@ import static com.kodikasgroup.utils.Utils.isValidFiscalCode;
 public class RegistrationController {
 	private static final String CITIZEN_ENDPOINT = "/citizens";
 	private static final ObjectMapper objectMapper = new ObjectMapper();
-
-	@FXML private TextField fiscalCodeField;
-	@FXML private TextField nameField;
-	@FXML private TextField surnameField;
-
 	UserTempMemory userTempMemory;
+	@FXML
+	private TextField fiscalCodeField;
+	@FXML
+	private TextField nameField;
+	@FXML
+	private TextField surnameField;
 
 	public void initialize() {
 		userTempMemory = UserTempMemory.getINSTANCE();
@@ -40,7 +41,7 @@ public class RegistrationController {
 	private boolean areEmpty() {
 		return fiscalCodeField.getText().isEmpty() ||
 				nameField.getText().isEmpty() ||
-				surnameField.getText().isEmpty() ;
+				surnameField.getText().isEmpty();
 	}
 
 	private boolean isValidData() {
@@ -61,11 +62,11 @@ public class RegistrationController {
 					Citizen citizen = objectMapper.readValue(response, Citizen.class);
 					String name = nameField.getText();
 					String surname = surnameField.getText();
-					if(citizen.getName()!= name && citizen.getSurname() == surname){
-						newWindow("popup",300,200);
-					}
-					else{
-						userTempMemory.setNewAvailabilityNotify("La tua cattegoria é : " +citizen.getCategory() );
+					if (!citizen.getName().equals(name) || !citizen.getSurname().equals(surname)) {
+						newWindow("popup", 300, 200);
+					} else {
+						userTempMemory.setNewAvailabilityNotify("La tua cattegoria é : " + citizen.getCategory());
+						newWindow("notifypopup", 300, 200);
 						setRoot("login");
 					}
 				} else {

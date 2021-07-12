@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class alreadyreservedController {
+public class AlreadyReservedController {
 	@FXML private Button closeButton;
 
 	public void closeWindow() {
