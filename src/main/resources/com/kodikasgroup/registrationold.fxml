@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="361.0" maxWidth="755.0" minHeight="250.0" minWidth="755.0" prefHeight="355.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.RegistrationController">
+	<TextField fx:id="fiscalCodeField" layoutX="32.0" layoutY="35.0" prefHeight="24.0" prefWidth="205.0" />
+	<Text layoutX="32.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codice Fiscale" wrappingWidth="108.0" />
+	<TextField fx:id="cardNumberField" layoutX="32.0" layoutY="85.0" prefHeight="24.0" prefWidth="205.0" />
+	<Text layoutX="32.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Tessera Sanitaria" wrappingWidth="195.0" />
+	<TextField fx:id="nameField" layoutX="464.0" layoutY="35.0" prefHeight="24.0" prefWidth="250.0" />
+	<Text layoutX="464.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" wrappingWidth="108.0" />
+	<TextField fx:id="surnameField" layoutX="464.0" layoutY="85.0" prefHeight="24.0" prefWidth="250.0" />
+	<Text layoutX="464.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cognome" wrappingWidth="67.0" />
+	<DatePicker fx:id="dobField" layoutX="32.0" layoutY="146.0" prefHeight="24.0" prefWidth="205.0" />
+	<Text layoutX="32.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data di Nascita" wrappingWidth="195.0" />
+	<Text layoutX="464.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria" wrappingWidth="195.0" />
+	<MenuButton fx:id="categoryField" layoutX="464.0" layoutY="146.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="250.0" text="over 80">
+		<items>
+			<MenuItem mnemonicParsing="false" text="over 80" />
+			<MenuItem mnemonicParsing="false" text="età 70-79" />
+			<MenuItem mnemonicParsing="false" text="paziente oncologico" />
+			<MenuItem mnemonicParsing="false" text="paziente iperteso" />
+			<MenuItem mnemonicParsing="false" text="paziente a rischio" />
+		</items>
+	</MenuButton>
+	<Button fx:id="confirmButton" defaultButton="true" layoutX="302.0" layoutY="323.0" mnemonicParsing="false" onAction="#goToNextPage" prefHeight="24.0" prefWidth="114.0" text="Conferma" />
+	<TextField fx:id="placeOfBirthField" layoutX="33.0" layoutY="205.0" prefHeight="24.0" prefWidth="205.0" />
+	<Text layoutX="32.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Luogo di Nascita" wrappingWidth="195.0" />
+</AnchorPane>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="486.0" prefWidth="549.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.InsertNewVaccinationCampaignController">
+   <children>
+      <StackPane layoutX="2.0" layoutY="3.0" prefHeight="486.0" prefWidth="543.0">
+         <children>
+            <VBox prefHeight="273.0" prefWidth="351.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="543.0">
+                     <children>
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#insertVaccine" prefHeight="24.0" prefWidth="135.0" style="-fx-background-color: #0e5b92;" text="Nuovo Vaccino" textFill="#ebebeb" />
+                     </children>
+                  </HBox>
+                  <TableView fx:id="vaccineTable" prefHeight="326.0" prefWidth="392.0" style="-fx-border-radius: 20; -fx-background-radius: 20;">
+                     <columns>
+                        <TableColumn fx:id="vaccineIdColumn" prefWidth="156.0" text="idVaccino" />
+                        <TableColumn fx:id="vaccineNameColumn" prefWidth="225.0" text="nomeVaccino" />
+                        <TableColumn fx:id="quantityColumn" prefWidth="161.0" text="quantità" />
+                     </columns>
+                  </TableView>
+                  <StackPane prefHeight="78.0" prefWidth="493.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Text fill="#0e5b92" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Malattia" wrappingWidth="110">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <TextField fx:id="issueNameField" alignment="CENTER" prefHeight="24.0" prefWidth="291.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 5;" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="10.0" />
+                     </VBox.margin>
+                  </StackPane>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <StackPane prefHeight="91.0" prefWidth="279.0">
+                           <children>
+                              <Button fx:id="annullaButton" alignment="CENTER" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #c23b22;" text="Annulla" textFill="#ebebeb" />
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="91.0" prefWidth="265.0">
+                           <children>
+                              <Button fx:id="confirmButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#confirm" style="-fx-background-color: #0e5b92;" text="Conferma" textFill="#ebebeb" />
+                           </children>
+                        </StackPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </children>
+</Pane>

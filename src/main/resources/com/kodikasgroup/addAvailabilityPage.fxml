@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="519.0" style="-fx-border-color: #0e5b92; -fx-border-width: 1; -fx-border-radius: 20; -fx-background-radius: 30; -fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.AvailabilityController">
+	<MenuButton fx:id="vaccineMenuButton" layoutX="223.0" layoutY="38.0" mnemonicParsing="false" style="-fx-background-color: #0e5b92;" text="Vaccino" textFill="#ebebeb">
+	</MenuButton>
+	<Label layoutX="213.0" layoutY="14.0" prefHeight="16.0" prefWidth="132.0" text="Seleziona Vaccino:" textFill="#0e5b92" />
+	<TextField fx:id="startHourField" layoutX="14.0" layoutY="128.0" promptText="09:00" style="-fx-border-color: #0e5b92; -fx-border-radius: 5;" />
+	<Label layoutX="16.0" layoutY="101.0" text="Ora Inizio:" textFill="#0e5b92" />
+	<TextField fx:id="endHourField" layoutX="16.0" layoutY="199.0" promptText="15:00" style="-fx-border-color: #0e5b92; -fx-border-radius: 5;" />
+	<Label layoutX="18.0" layoutY="173.0" text="Ora Fine:" textFill="#0e5b92" />
+	<DatePicker fx:id="startDateField" editable="false" layoutX="292.0" layoutY="128.0" promptText="01/02/2021" style="-fx-border-color: #0e5b92; -fx-border-radius: 5;" />
+	<DatePicker fx:id="endDateField" editable="false" layoutX="292.0" layoutY="199.0" promptText="05/02/2021" style="-fx-border-color: #0e5b92; -fx-border-radius: 5;" />
+	<Label layoutX="292.0" layoutY="103.0" text="Data Inizio:" textFill="#0e5b92" />
+	<Label layoutX="292.0" layoutY="174.0" text="Data Fine:" textFill="#0e5b92" />
+	<ButtonBar layoutX="305.0" layoutY="354.0" prefHeight="40.0" prefWidth="198.0">
+		<buttons>
+			<Button alignment="CENTER" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #c23b22;" text="Annulla" textFill="#ebebeb" />
+			<Button fx:id="confirmButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="599.0" layoutY="17.0" mnemonicParsing="false" onAction="#confirm" style="-fx-background-color: #0e5b92;" text="Conferma" textFill="#ebebeb" />
+		</buttons>
+		<opaqueInsets>
+			<Insets />
+		</opaqueInsets>
+	</ButtonBar>
+   <TextField fx:id="clinicNameField" layoutX="16.0" layoutY="268.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 5;" />
+   <Label layoutX="19.0" layoutY="241.0" text="Nome Ambulatorio:" textFill="#0e5b92" />
+</AnchorPane>

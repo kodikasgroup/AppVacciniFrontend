@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="200.0" maxWidth="300.0" minHeight="200.0" minWidth="300.0" prefHeight="200.0" prefWidth="300.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 20; -fx-background-radius: 30; -fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.NotifyPopUpController">
+	<children>
+		<Text fx:id="notifystring" layoutX="17.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="265.89208984375">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Text>
+      <Button fx:id="closeButton" alignment="CENTER" layoutX="114.0" layoutY="162.0" mnemonicParsing="false" onAction="#closeWindow" style="-fx-background-color: #c23b22;" text="CHIUDI" textFill="#ebebeb" />
+      <Label fx:id="nametitle" alignment="CENTER" layoutX="39.0" layoutY="14.0" prefHeight="47.0" prefWidth="205.0" text="Notifica  nuova Disponibilitá" textFill="#c23b22" />
+	</children>
+</AnchorPane>

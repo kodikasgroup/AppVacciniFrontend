@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1080.0" style="-fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.ViewAvailabilitydateController">
+    <children>
+        <Label layoutX="266.0" layoutY="40.0" prefHeight="68.0" prefWidth="561.0" text="Prenotazione vaccinazione">
+            <font>
+                <Font name="System Bold" size="35.0" />
+            </font>
+        </Label>
+        <Label layoutX="266.0" layoutY="97.0" prefHeight="52.0" prefWidth="346.0" text="Aulss9">
+            <font>
+                <Font size="35.0" />
+            </font>
+        </Label>
+        <Pane layoutX="57.0" layoutY="287.0" prefHeight="531.0" prefWidth="966.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 20;">
+            <children>
+                <StackPane layoutX="24.0" layoutY="56.0" prefHeight="451.0" prefWidth="919.0">
+                    <children>
+                        <VBox prefHeight="506.0" prefWidth="950.0">
+                            <children>
+                        <VBox prefHeight="428.0" prefWidth="950.0">
+                           <children>
+                              <HBox prefHeight="564.0" prefWidth="772.0">
+                                 <children>
+                                    <VBox prefHeight="564.0" prefWidth="272.0">
+                                       <children>
+                                          <Label alignment="CENTER" prefHeight="53.0" prefWidth="935.0" text="Lista giorni" textAlignment="CENTER">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <HBox prefHeight="27.0" prefWidth="272.0">
+                                             <children>
+                                                <Button fx:id="indietroclick" mnemonicParsing="false" onAction="#backroclick" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: #0e5b92;" text="&lt;- Indietro " textFill="#ebebeb" />
+                                                <Label fx:id="datearea" alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="97.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 15;" />
+                                                <Button fx:id="avanticlick" mnemonicParsing="false" onAction="#forwardclick" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #0e5b92;" text="Avanti -&gt;" textFill="#ebebeb" />
+                                             </children>
+                                          </HBox>
+                                          <ListView fx:id="dateview" prefHeight="300.0" prefWidth="280.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 20; -fx-background-radius: 20; -fx-selection-bar-non-focused: #0e5b92;" />
+                                       </children>
+                                    </VBox>
+                                    <StackPane prefHeight="334.0" prefWidth="323.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#onCLickShowTimetables" prefHeight="55.0" prefWidth="160.0" style="-fx-background-color: #0e5b92;" text="Conferma Giorno -&gt;" textFill="#ebebeb" />
+                                       </children>
+                                    </StackPane>
+                                    <VBox prefHeight="363.0" prefWidth="301.0">
+                                       <children>
+                                          <Label alignment="CENTER" prefHeight="65.0" prefWidth="301.0" text="Lista Ore disponibili" textAlignment="CENTER">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <Pane prefHeight="36.0" prefWidth="301.0" />
+                                          <Accordion />
+                                          <ListView fx:id="timetables" prefHeight="314.0" prefWidth="301.0" style="-fx-border-color: #0e5b92; -fx-border-radius: 15; -fx-background-radius: 15;" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                                <HBox prefHeight="154.0" prefWidth="919.0">
+                                    <children>
+                                        <StackPane prefHeight="89.0" prefWidth="489.0">
+                                            <children>
+                                                <Button mnemonicParsing="false" onAction="#onCLickBackPage" prefHeight="34.0" prefWidth="164.0" style="-fx-background-color: #ffc107;" text="Torna a scelta sede" textFill="#1e1e1e">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </Button>
+                                            </children>
+                                        </StackPane>
+                              <StackPane prefHeight="89.0" prefWidth="644.0">
+                                 <children>
+                                                <Button mnemonicParsing="false" onAction="#onClickNotify" prefHeight="34.0" prefWidth="273.0" style="-fx-background-color: #0e5b92;" text="Imposta Notifica nuove disponibilitá" textFill="#ebebeb">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </Button>
+                                 </children>
+                              </StackPane>
+                                        <StackPane prefHeight="89.0" prefWidth="535.0">
+                                            <children>
+                                    <Button mnemonicParsing="false" onAction="#onClickConfirme" prefHeight="34.0" prefWidth="92.0" style="-fx-background-color: #0e5b92;" text="Conferma" textFill="#ebebeb">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                            </children>
+                                        </StackPane>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </StackPane>
+            <Label alignment="CENTER" prefHeight="53.0" prefWidth="935.0" text="Selezionare un Giorno" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            </children>
+        </Pane>
+        <ImageView fitHeight="126.0" fitWidth="158.0" layoutX="73.0" layoutY="34.0">
+            <image>
+                <Image url="@../../object/company_logo.png" />
+            </image>
+        </ImageView>
+        <Label layoutX="531.0" layoutY="189.0" prefHeight="68.0" prefWidth="225.0" style="-fx-underline: true;" text="3. Sede                   " textFill="#a2acb5">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+        <Label layoutX="298.0" layoutY="189.0" prefHeight="68.0" prefWidth="225.0" style="-fx-underline: true;" text="2. Servizio              " textFill="#a2acb5">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+        <Label layoutX="73.0" layoutY="189.0" prefHeight="68.0" prefWidth="225.0" style="-fx-underline: true;" text="1. Iscrizione           " textFill="#a2acb5">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+        <Label layoutX="770.0" layoutY="189.0" prefHeight="68.0" prefWidth="225.0" style="-fx-underline: true;" text="4.Giorno                " textFill="#0e5b92">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

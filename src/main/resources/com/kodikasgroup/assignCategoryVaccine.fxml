@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="136.0" prefWidth="484.0" style="-fx-border-color: #0e5b92; -fx-border-width: 1; -fx-border-radius: 20; -fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kodikasgroup.controller.AssignCategoryVaccineController">
+	<MenuButton fx:id="vaccineMenuButton" layoutX="29.0" layoutY="49.0" mnemonicParsing="false" style="-fx-background-color: #0e5b92;" text="Vaccino" textFill="#ebebeb" />
+	<Label layoutX="29.0" layoutY="30.0" text="Seleziona Vaccino:" textFill="#0e5b92">
+      <font>
+         <Font size="13.0" />
+      </font></Label>
+	<MenuButton fx:id="categoryMenuButton" layoutX="321.0" layoutY="52.0" mnemonicParsing="false" style="-fx-background-color: #0e5b92;" text="paziente oncologico" textFill="#ebebeb">
+		<items>
+			<MenuItem mnemonicParsing="false" text="paziente oncologico" />
+			<MenuItem mnemonicParsing="false" text="paziente iperteso" />
+			<MenuItem mnemonicParsing="false" text="paziente a rischio" />
+			<MenuItem mnemonicParsing="false" text="età 70-79" />
+			<MenuItem mnemonicParsing="false" text="over 80" />
+		</items>
+	</MenuButton>
+	<Label layoutX="321.0" layoutY="33.0" text="Seleziona Categoria:" textFill="#0e5b92" />
+	<ButtonBar layoutX="118.0" layoutY="82.0" prefHeight="40.0" prefWidth="159.0">
+		<buttons>
+			<Button alignment="CENTER" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #c23b22;" text="Annulla" textFill="#ebebeb" />
+			<Button fx:id="confirmButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="599.0" layoutY="17.0" mnemonicParsing="false" onAction="#confirm" style="-fx-background-color: #0e5b92;" text="Conferma" textFill="#ebebeb" />
+		</buttons>
+		<opaqueInsets>
+			<Insets />
+		</opaqueInsets>
+	</ButtonBar>
+</AnchorPane>
